@@ -1,47 +1,74 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import RecruiterNav from './components/RecruiterNav.vue'
+import HeroSection from './components/HeroSection.vue'
+import TechMarquee from './components/TechMarquee.vue'
+import ProjectsSection from './components/ProjectsSection.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <!--
+    Recruiter Magnet
+    -----------------
+    The page is intentionally recruiter-first:
+    identity -> availability -> proof -> technical breadth.
+  -->
+  <div class="portfolio-shell">
+    <RecruiterNav />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <main>
+      <HeroSection />
+      <TechMarquee />
+      <ProjectsSection />
+    </main>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<style>
+/*
+ * Global foundation.
+ * Individual components will own their component-specific styles.
+ */
+
+:root {
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  color: #f7fafc;
+  background: #05090d;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+* {
+  box-sizing: border-box;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 70% 15%, rgba(16, 185, 129, 0.08), transparent 30%),
+    #05090d;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+button,
+a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.portfolio-shell {
+  min-height: 100vh;
 }
 </style>
