@@ -24,6 +24,12 @@ type Project = {
   githubUrl?: string
 }
 
+/*
+ * Flagship projects
+ * -----------------
+ * Keep this list focused on the projects that best demonstrate
+ * full-stack engineering ability to recruiters.
+ */
 const projects: Project[] = [
   {
     number: '01',
@@ -39,6 +45,12 @@ const projects: Project[] = [
       'OpenCV',
       'PHP',
     ],
+    image: '/images/facilities-toolbox.png',
+    imageAlt:
+      'Facilities Management Toolbox command centre showing workforce attendance and operational dashboard',
+    status: 'In Development',
+    githubUrl:
+      'https://github.com/keketsoleu25/facilities-toolbox',
   },
 
   {
@@ -59,7 +71,8 @@ const projects: Project[] = [
     imageAlt:
       'Tech Alchemy CRM interface showing the production client and project management platform',
     status: 'Production',
-    liveUrl: 'https://tech-alchemy-crm.vercel.app',
+    liveUrl:
+      'https://tech-alchemy-crm.vercel.app',
     githubUrl:
       'https://github.com/keketsoleu25/tech-alchemy-crm',
   },
@@ -75,7 +88,12 @@ const projects: Project[] = [
       'Auth.js',
       'PostgreSQL',
     ],
-    liveUrl: 'https://auth-system-cyan-one.vercel.app',
+    image: '/images/auth-system.png',
+    imageAlt:
+      'Authentication System interface showing the secure authentication platform',
+    status: 'Production',
+    liveUrl:
+      'https://auth-system-cyan-one.vercel.app',
     githubUrl:
       'https://github.com/keketsoleu25/Auth-System',
   },
@@ -87,14 +105,20 @@ const projects: Project[] = [
     id="projects"
     class="projects-section"
   >
+    <!-- =====================================================
+         SECTION HEADING
+    ====================================================== -->
     <div class="section-heading">
       <p>Selected engineering work</p>
 
       <h2>Flagship Projects</h2>
+
       <span class="heading-line"></span>
     </div>
 
-    <!-- Project cards -->
+    <!-- =====================================================
+         PROJECT GRID
+    ====================================================== -->
     <div class="projects-grid">
       <article
         v-for="project in projects"
@@ -107,15 +131,21 @@ const projects: Project[] = [
             {{ project.number }}
           </span>
 
-          <span class="project-label">
-            Full-Stack Project
+          <span
+            class="status"
+            :class="
+              project.status === 'Production'
+                ? 'production'
+                : 'development'
+            "
+          >
+            {{ project.status }}
           </span>
         </div>
 
-        <!--
-          Real project screenshot.
-          Images are stored inside /public/images.
-        -->
+        <!-- =================================================
+             PROJECT SCREENSHOT
+        ================================================== -->
         <div class="project-preview">
           <img
             :src="project.image"
@@ -124,9 +154,17 @@ const projects: Project[] = [
           />
         </div>
 
-        <!-- Project information -->
+        <!-- =================================================
+             PROJECT INFORMATION
+        ================================================== -->
         <div class="project-content">
-          <h3>{{ project.title }}</h3>
+          <span class="project-label">
+            Full-Stack Project
+          </span>
+
+          <h3>
+            {{ project.title }}
+          </h3>
 
           <p>
             {{ project.description }}
@@ -142,7 +180,7 @@ const projects: Project[] = [
             </span>
           </div>
 
-          <!-- External project links -->
+          <!-- External links -->
           <div
             v-if="project.liveUrl || project.githubUrl"
             class="project-actions"
@@ -152,6 +190,7 @@ const projects: Project[] = [
               :href="project.liveUrl"
               target="_blank"
               rel="noopener noreferrer"
+              :aria-label="`Open ${project.title} live demo`"
             >
               Live Demo ↗
             </a>
@@ -161,6 +200,7 @@ const projects: Project[] = [
               :href="project.githubUrl"
               target="_blank"
               rel="noopener noreferrer"
+              :aria-label="`Open ${project.title} GitHub repository`"
             >
               GitHub ↗
             </a>
@@ -169,7 +209,9 @@ const projects: Project[] = [
       </article>
     </div>
 
-    <!-- Main GitHub profile -->
+    <!-- =====================================================
+         MAIN GITHUB PROFILE
+    ====================================================== -->
     <a
       class="github-more"
       href="https://github.com/keketsoleu25"
@@ -207,7 +249,9 @@ const projects: Project[] = [
 
 .section-heading p {
   margin: 0 0 8px;
+
   color: #60707e;
+
   font-size: 0.72rem;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -215,14 +259,18 @@ const projects: Project[] = [
 
 .section-heading h2 {
   margin: 0;
+
   color: #f4f7fa;
+
   font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
 .heading-line {
   display: block;
+
   width: 56px;
   height: 2px;
+
   margin: 16px auto 0;
 
   background: #2dd4bf;
@@ -236,7 +284,8 @@ const projects: Project[] = [
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
   gap: 18px;
 }
 
@@ -247,13 +296,18 @@ const projects: Project[] = [
  */
 
 .project-card {
+  min-width: 0;
   overflow: hidden;
 
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.045),
-    rgba(255, 255, 255, 0.015)
-  );
+  display: flex;
+  flex-direction: column;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.015)
+    );
 
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 12px;
@@ -266,41 +320,79 @@ const projects: Project[] = [
 
 .project-card:hover {
   transform: translateY(-5px);
+
   border-color: rgba(45, 212, 191, 0.35);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.18);
 }
+
+/*
+ * =========================================================
+ * CARD HEADER
+ * =========================================================
+ */
 
 .project-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 16px 18px 0;
+  gap: 12px;
+
+  padding: 16px 16px 0;
 }
 
 .project-number {
   width: 34px;
   height: 28px;
+
   flex: 0 0 auto;
 
   display: grid;
   place-items: center;
 
-  width: 34px;
-  height: 28px;
-
   color: #06110f;
   background: #2dd4bf;
 
   border-radius: 5px;
+
   font-size: 0.72rem;
   font-weight: 800;
 }
 
-.project-label {
-  color: #65727e;
-  font-size: 0.68rem;
+/*
+ * =========================================================
+ * STATUS
+ * =========================================================
+ */
+
+.status {
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+}
+
+.production {
+  color: #5eead4;
+
+  background: rgba(45, 212, 191, 0.1);
+
+  border: 1px solid rgba(45, 212, 191, 0.18);
+}
+
+.development {
+  color: #facc15;
+
+  background: rgba(250, 204, 21, 0.08);
+
+  border: 1px solid rgba(250, 204, 21, 0.16);
 }
 
 /*
@@ -310,28 +402,32 @@ const projects: Project[] = [
  */
 
 .project-preview {
-  height: 190px;
+  height: 220px;
+
   margin: 16px;
 
-  display: grid;
-  place-items: center;
+  overflow: hidden;
 
-  color: rgba(45, 212, 191, 0.8);
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(45, 212, 191, 0.12),
-      transparent 55%
-    ),
-    #070d12;
+  background: #070d12;
 
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
 }
 
-.project-preview span {
-  font-size: 3rem;
+.project-preview img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: top;
+
+  transition: transform 300ms ease;
+}
+
+.project-card:hover .project-preview img {
+  transform: scale(1.025);
 }
 
 /*
@@ -341,26 +437,47 @@ const projects: Project[] = [
  */
 
 .project-content {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
   padding: 3px 18px 20px;
+}
+
+.project-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #65727e;
+
+  font-size: 0.64rem;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .project-content h3 {
   margin: 0 0 12px;
 
   color: #f1f5f9;
-  font-size: 1.15rem;
+
+  font-size: 1.1rem;
 }
 
 .project-content p {
   margin: 0;
+
   color: #929eaa;
-  font-size: 0.86rem;
+
+  font-size: 0.84rem;
   line-height: 1.65;
 }
 
 /*
  * =========================================================
- * TECHNOLOGIES
+ * TECHNOLOGY STACK
  * =========================================================
  */
 
@@ -369,21 +486,25 @@ const projects: Project[] = [
   flex-wrap: wrap;
 
   gap: 6px;
-  margin-top: 16px;
+
+  margin-top: 18px;
 }
 
 .technology-list span {
   max-width: 100%;
+
   padding: 5px 7px;
+
   overflow-wrap: anywhere;
 
   color: #aeb9c3;
 
   background: rgba(255, 255, 255, 0.04);
+
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 4px;
 
-  font-size: 0.69rem;
+  font-size: 0.67rem;
 }
 
 /*
@@ -394,10 +515,12 @@ const projects: Project[] = [
 
 .project-actions {
   display: flex;
+  flex-wrap: wrap;
+
   gap: 20px;
 
-  margin-top: 20px;
-  padding-top: 16px;
+  margin-top: auto;
+  padding-top: 18px;
 
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -417,6 +540,14 @@ const projects: Project[] = [
 
 .project-actions a:hover {
   color: #5eead4;
+
+  transform: translateY(-1px);
+}
+
+.project-actions a:focus-visible,
+.github-more:focus-visible {
+  outline: 2px solid #2dd4bf;
+  outline-offset: 4px;
 }
 
 /*
@@ -428,6 +559,7 @@ const projects: Project[] = [
 .github-more {
   width: fit-content;
   max-width: 100%;
+
   display: block;
 
   margin: 32px auto 0;
@@ -436,23 +568,71 @@ const projects: Project[] = [
   color: #c6d0d9;
 
   background: rgba(255, 255, 255, 0.025);
+
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 6px;
 
   font-size: 0.8rem;
+
+  text-align: center;
+  text-decoration: none;
+
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
 }
 
-@media (max-width: 900px) {
+.github-more:hover {
+  color: #2dd4bf;
+
+  background: rgba(45, 212, 191, 0.04);
+
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+/*
+ * =========================================================
+ * TABLET / SMALL LAPTOP
+ * =========================================================
+ */
+
+@media (max-width: 1050px) {
   .projects-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .project-preview {
-    height: 190px;
+  .project-card:last-child {
+    grid-column: 1 / -1;
   }
 
-  .project-content p {
-    min-height: auto;
+  .project-card:last-child .project-preview {
+    height: 280px;
+  }
+}
+
+/*
+ * =========================================================
+ * TABLET
+ * =========================================================
+ */
+
+@media (max-width: 760px) {
+  .projects-section {
+    padding: 40px 0 70px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card:last-child {
+    grid-column: auto;
+  }
+
+  .project-preview,
+  .project-card:last-child .project-preview {
+    height: 240px;
   }
 }
 
@@ -462,9 +642,65 @@ const projects: Project[] = [
  * =========================================================
  */
 
-@media (min-width: 1228px) {
+@media (max-width: 520px) {
   .projects-section {
     width: min(100% - 28px, 1180px);
+
+    padding: 35px 0 60px;
+  }
+
+  .section-heading {
+    margin-bottom: 28px;
+  }
+
+  .project-top {
+    padding: 14px 14px 0;
+  }
+
+  .project-preview,
+  .project-card:last-child .project-preview {
+    height: 190px;
+
+    margin: 14px;
+  }
+
+  .project-content {
+    padding: 3px 14px 18px;
+  }
+
+  .project-content h3 {
+    font-size: 1rem;
+  }
+
+  .project-content p {
+    font-size: 0.82rem;
+  }
+
+  .technology-list span {
+    font-size: 0.64rem;
+  }
+
+  .project-actions {
+    gap: 18px;
+  }
+}
+
+/*
+ * =========================================================
+ * VERY SMALL MOBILE
+ * =========================================================
+ */
+
+@media (max-width: 380px) {
+  .project-preview,
+  .project-card:last-child .project-preview {
+    height: 165px;
+  }
+
+  .status {
+    padding: 5px 8px;
+
+    font-size: 0.6rem;
   }
 }
 </style>
