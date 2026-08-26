@@ -57,7 +57,7 @@ const projects: Project[] = [
     number: '02',
     title: 'Tech Alchemy CRM',
     description:
-      'A production-deployed full-stack CRM connecting clients, projects, Kanban tasks, invoicing, analytics, authentication and a client portal.',
+      'Built to run my own studio — Tech Alchemy Lab — end to end: client intake, project tracking, task management, and invoicing in one place, replacing five disconnected tools.',
     technologies: [
       'Next.js',
       'React',
