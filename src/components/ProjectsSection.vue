@@ -76,27 +76,6 @@ const projects: Project[] = [
     githubUrl:
       'https://github.com/keketsoleu25/tech-alchemy-crm',
   },
-
-  {
-    number: '03',
-    title: 'Authentication System',
-    description:
-      'A standalone authentication system supporting credentials, Google OAuth, email verification and password recovery.',
-    technologies: [
-      'Next.js',
-      'TypeScript',
-      'Auth.js',
-      'PostgreSQL',
-    ],
-    image: '/images/auth-system.png',
-    imageAlt:
-      'Authentication System interface showing the secure authentication platform',
-    status: 'Production',
-    liveUrl:
-      'https://auth-system-cyan-one.vercel.app',
-    githubUrl:
-      'https://github.com/keketsoleu25/Auth-System',
-  },
 ]
 </script>
 
@@ -284,7 +263,7 @@ const projects: Project[] = [
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
   gap: 18px;
 }
@@ -601,14 +580,6 @@ const projects: Project[] = [
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .project-card:last-child {
-    grid-column: 1 / -1;
-  }
-
-  .project-card:last-child .project-preview {
-    height: 280px;
-  }
 }
 
 /*
@@ -626,12 +597,7 @@ const projects: Project[] = [
     grid-template-columns: 1fr;
   }
 
-  .project-card:last-child {
-    grid-column: auto;
-  }
-
-  .project-preview,
-  .project-card:last-child .project-preview {
+  .project-preview {
     height: 240px;
   }
 }
@@ -657,8 +623,7 @@ const projects: Project[] = [
     padding: 14px 14px 0;
   }
 
-  .project-preview,
-  .project-card:last-child .project-preview {
+  .project-preview {
     height: 190px;
 
     margin: 14px;
@@ -692,8 +657,7 @@ const projects: Project[] = [
  */
 
 @media (max-width: 380px) {
-  .project-preview,
-  .project-card:last-child .project-preview {
+  .project-preview {
     height: 165px;
   }
 
