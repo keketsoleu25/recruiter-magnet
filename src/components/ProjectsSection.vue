@@ -29,6 +29,7 @@ const projects: Project[] = [
       'OpenCV',
       'PHP',
     ],
+    githubUrl: 'https://github.com/keketsoleu25/facilities-toolbox',
   },
   {
     number: '02',
