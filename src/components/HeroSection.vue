@@ -81,97 +81,115 @@ while (problem) {
 
 <style scoped>
 .hero {
-  width: min(1180px, calc(100% - 40px));
-  min-height: 560px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: 64px 16px 44px;
 
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  align-items: center;
-  gap: 70px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px;
+}
+
+.hero-content {
+  min-width: 0;
 }
 
 .status {
+  width: fit-content;
+  max-width: 100%;
+
   display: inline-flex;
   align-items: center;
   gap: 8px;
 
-  padding: 7px 11px;
+  padding: 7px 10px;
 
   color: #5eead4;
   background: rgba(45, 212, 191, 0.09);
   border: 1px solid rgba(45, 212, 191, 0.14);
   border-radius: 5px;
 
-  font-size: 0.72rem;
+  font-size: 0.66rem;
+  line-height: 1.3;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
 
 .status-dot {
   width: 7px;
   height: 7px;
+  flex: 0 0 auto;
   background: #2dd4bf;
   border-radius: 50%;
 }
 
 .eyebrow {
-  margin: 32px 0 5px;
+  margin: 28px 0 6px;
   color: #81909d;
+  font-size: 0.9rem;
 }
 
 h1 {
   margin: 0;
-  font-size: clamp(3rem, 7vw, 5.4rem);
+  color: #f7fafc;
+  font-size: clamp(2.55rem, 14vw, 4.6rem);
   line-height: 0.98;
   letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
 }
 
 h2 {
-  margin: 16px 0 0;
+  max-width: 760px;
+  margin: 14px 0 0;
   color: #2dd4bf;
-  font-size: clamp(1.6rem, 4vw, 2.7rem);
-  line-height: 1.05;
+  font-size: clamp(1.45rem, 7vw, 2.55rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
 .intro {
   max-width: 650px;
-  margin: 25px 0;
+  margin: 22px 0;
 
   color: #adb7c2;
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-size: 0.98rem;
+  line-height: 1.7;
 }
 
 .availability {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .availability span {
-  padding: 8px 11px;
+  max-width: 100%;
+  padding: 8px 10px;
 
   color: #c7d0d9;
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 6px;
 
-  font-size: 0.78rem;
+  font-size: 0.72rem;
+  line-height: 1.35;
 }
 
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 26px;
 }
 
 .actions a {
-  padding: 11px 18px;
+  width: 100%;
+  padding: 12px 16px;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .primary {
@@ -184,66 +202,89 @@ h2 {
 }
 
 .hero-visual {
-  position: relative;
-
-  min-height: 350px;
-
-  display: grid;
-  place-items: center;
+  display: none;
 }
 
-.code-orbit {
-  width: 220px;
-  height: 220px;
-
-  display: grid;
-  place-items: center;
-
-  border: 1px solid rgba(45, 212, 191, 0.35);
-  border-radius: 50%;
-
-  box-shadow:
-    0 0 80px rgba(45, 212, 191, 0.12),
-    inset 0 0 50px rgba(45, 212, 191, 0.04);
-}
-
-.code-orbit span {
-  color: #2dd4bf;
-  font-size: 3rem;
-}
-
-pre {
-  position: absolute;
-  right: 0;
-  top: 80px;
-
-  color: rgba(45, 212, 191, 0.35);
-  font-size: 0.7rem;
-  line-height: 1.7;
-
-  pointer-events: none;
-}
-
-@media (max-width: 850px) {
+@media (min-width: 520px) {
   .hero {
-    grid-template-columns: 1fr;
-    padding: 70px 0 40px;
+    padding-inline: 20px;
   }
 
-  .hero-visual {
-    display: none;
-  }
-}
-
-@media (max-width: 520px) {
-  .hero {
-    width: min(100% - 28px, 1180px);
-    min-height: auto;
+  .actions {
+    grid-template-columns: repeat(3, max-content);
   }
 
   .actions a {
-    flex: 1;
-    text-align: center;
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 80px 24px 56px;
+  }
+
+  .status {
+    font-size: 0.72rem;
+  }
+
+  .intro {
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero {
+    min-height: 560px;
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+    align-items: center;
+    gap: clamp(40px, 6vw, 70px);
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .hero-visual {
+    position: relative;
+    min-height: 350px;
+    display: grid;
+    place-items: center;
+  }
+
+  .code-orbit {
+    width: min(220px, 80%);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(45, 212, 191, 0.35);
+    border-radius: 50%;
+    box-shadow:
+      0 0 80px rgba(45, 212, 191, 0.12),
+      inset 0 0 50px rgba(45, 212, 191, 0.04);
+  }
+
+  .code-orbit span {
+    color: #2dd4bf;
+    font-size: 3rem;
+  }
+
+  pre {
+    position: absolute;
+    right: 0;
+    top: 80px;
+    max-width: 100%;
+    overflow: hidden;
+
+    color: rgba(45, 212, 191, 0.35);
+    font-size: 0.7rem;
+    line-height: 1.7;
+    pointer-events: none;
+  }
+}
+
+@media (min-width: 1228px) {
+  .hero {
+    padding-inline: 0;
   }
 }
 </style>
