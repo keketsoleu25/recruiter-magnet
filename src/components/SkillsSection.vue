@@ -33,12 +33,7 @@ const skillGroups: SkillGroup[] = [
   },
 ]
 
-const learningStack = [
-  'Docker',
-  'Containers',
-  'CI/CD Pipelines',
-  'Deployment Automation',
-]
+const learningStack = ['Docker', 'Containers', 'CI/CD Pipelines', 'Deployment Automation']
 </script>
 
 <template>
