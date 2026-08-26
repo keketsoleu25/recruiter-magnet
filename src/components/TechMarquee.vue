@@ -50,9 +50,9 @@ const technologies = [
 <style scoped>
 .marquee {
   position: relative;
-  width: min(1180px, calc(100% - 40px));
-  margin: 0 auto 70px;
-
+  width: calc(100% - 32px);
+  max-width: 1180px;
+  margin: 0 auto 58px;
   overflow: hidden;
 
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -63,15 +63,14 @@ const technologies = [
 .track {
   display: flex;
   width: max-content;
+  will-change: transform;
 
-  /*
-   * 46 seconds keeps the movement deliberately subtle.
-   * The animation pauses when a recruiter wants to inspect an item.
-   */
+  /* Slow movement keeps the strip readable rather than decorative noise. */
   animation: marquee 46s linear infinite;
 }
 
-.marquee:hover .track {
+.marquee:hover .track,
+.marquee:focus-within .track {
   animation-play-state: paused;
 }
 
@@ -79,25 +78,23 @@ const technologies = [
   display: flex;
   align-items: center;
   flex-shrink: 0;
-
-  gap: 42px;
-  padding: 18px 21px;
+  gap: 28px;
+  padding: 15px 16px;
 }
 
 .technology {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
 
   color: #b8c2cc;
   white-space: nowrap;
-  font-size: 0.83rem;
+  font-size: 0.76rem;
 }
 
 .dot {
-  width: 7px;
-  height: 7px;
-
+  width: 6px;
+  height: 6px;
   flex-shrink: 0;
 
   background: #2dd4bf;
@@ -110,9 +107,7 @@ const technologies = [
   z-index: 2;
   top: 0;
   bottom: 0;
-
-  width: 90px;
-
+  width: 42px;
   pointer-events: none;
 }
 
@@ -126,10 +121,6 @@ const technologies = [
   background: linear-gradient(to left, #05090d, transparent);
 }
 
-/*
- * Moving exactly half the complete track works because both groups
- * contain identical content.
- */
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -140,23 +131,39 @@ const technologies = [
   }
 }
 
-/*
- * Accessibility: users who request reduced motion still see the
- * complete stack without continuous animation.
- */
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
-  }
-}
-
-@media (max-width: 520px) {
+@media (min-width: 768px) {
   .marquee {
-    width: min(100% - 28px, 1180px);
+    width: calc(100% - 48px);
+    margin-bottom: 70px;
   }
 
   .technology-group {
-    gap: 30px;
+    gap: 42px;
+    padding: 18px 21px;
+  }
+
+  .technology {
+    font-size: 0.83rem;
+  }
+
+  .fade {
+    width: 90px;
+  }
+}
+
+@media (min-width: 1228px) {
+  .marquee {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+  }
+
+  .track {
+    animation: none;
   }
 }
 </style>
