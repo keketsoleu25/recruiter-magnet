@@ -1,7 +1,8 @@
 <script setup lang="ts">
 /*
  * RecruiterNav
- * Mobile-first navigation that keeps identity and CV access visible at every size.
+ * Keeps identity and CV access visible at every size while avoiding cramped
+ * desktop navigation on narrower laptop and zoomed browser layouts.
  */
 
 const navItems = [
@@ -22,7 +23,7 @@ const navItems = [
 
         <span class="brand-copy">
           <strong>Keketso <em>Leu</em></strong>
-          <small>Full-Stack Developer</small>
+          <small>Full-Stack Software Developer</small>
         </span>
       </a>
 
@@ -44,13 +45,13 @@ const navItems = [
 .nav-shell {
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(5, 9, 13, 0.88);
+  background: rgba(5, 9, 13, 0.9);
   backdrop-filter: blur(14px);
 }
 
 .nav {
   width: 100%;
-  max-width: 1180px;
+  max-width: 1240px;
   min-height: 68px;
   margin-inline: auto;
   padding-inline: 16px;
@@ -58,7 +59,7 @@ const navItems = [
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
 }
 
 .brand {
@@ -94,7 +95,7 @@ const navItems = [
 .brand strong {
   overflow: hidden;
   color: #f7fafc;
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -108,7 +109,8 @@ const navItems = [
   display: none;
   margin-top: 3px;
   color: #84909d;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
+  white-space: nowrap;
 }
 
 .links {
@@ -149,8 +151,8 @@ const navItems = [
 
 @media (min-width: 768px) {
   .nav {
-    min-height: 74px;
-    padding-inline: 24px;
+    min-height: 76px;
+    padding-inline: 28px;
   }
 
   .brand-mark {
@@ -161,18 +163,28 @@ const navItems = [
   .brand strong {
     font-size: 1rem;
   }
+
+  .cv-button {
+    padding: 10px 16px;
+  }
 }
 
-@media (min-width: 960px) {
+/*
+ * Keep the compact header on medium laptops and zoomed layouts.
+ * Full navigation appears only when there is genuinely enough width.
+ */
+@media (min-width: 1180px) {
   .links {
     display: flex;
     align-items: center;
-    gap: clamp(14px, 2vw, 26px);
+    gap: clamp(18px, 2vw, 28px);
+    margin-left: auto;
   }
 
   .links a {
     color: #aeb7c2;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
+    white-space: nowrap;
     transition: color 160ms ease;
   }
 
@@ -181,7 +193,7 @@ const navItems = [
   }
 }
 
-@media (min-width: 1228px) {
+@media (min-width: 1296px) {
   .nav {
     padding-inline: 0;
   }
