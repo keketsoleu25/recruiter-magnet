@@ -1,8 +1,8 @@
 <script setup lang="ts">
 /*
  * HeroSection
- * Answers the recruiter's first questions immediately:
- * who, what, where, availability and where to verify the work.
+ * Recruiter-first introduction with a real profile image on larger screens.
+ * Mobile remains text-first; laptops and desktops gain a balanced visual column.
  */
 </script>
 
@@ -57,25 +57,24 @@
       </div>
     </div>
 
-    <div class="hero-visual" aria-hidden="true">
-      <div class="code-orbit">
-        <span>&lt;/&gt;</span>
+    <figure class="hero-visual">
+      <div class="portrait-frame">
+        <img
+          src="https://the-tech-alchemy-lab.vercel.app/images/profile_photo.jpg"
+          alt="Keketso Leu"
+          class="portrait"
+          loading="eager"
+        />
+
+        <div class="portrait-badge">
+          <span>&lt;/&gt;</span>
+          <div>
+            <strong>Building real systems</strong>
+            <small>Frontend · Backend · Data · Deployment</small>
+          </div>
+        </div>
       </div>
-
-      <pre>
-const developer = {
-  code: "passion",
-  build: "solutions",
-  ship: "impact"
-}
-
-while (problem) {
-  think()
-  build()
-  solve()
-}
-      </pre>
-    </div>
+    </figure>
   </section>
 </template>
 
@@ -205,6 +204,77 @@ h2 {
 
 .hero-visual {
   display: none;
+  margin: 0;
+}
+
+.portrait-frame {
+  position: relative;
+  width: min(100%, 430px);
+  margin-inline: auto;
+}
+
+.portrait {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+
+  border: 1px solid rgba(45, 212, 191, 0.28);
+  border-radius: 18px;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    0 0 70px rgba(45, 212, 191, 0.08);
+}
+
+.portrait-frame::before {
+  content: '';
+  position: absolute;
+  inset: -14px 18px 22px -14px;
+  z-index: -1;
+
+  border: 1px solid rgba(45, 212, 191, 0.16);
+  border-radius: 22px;
+}
+
+.portrait-badge {
+  position: absolute;
+  left: -26px;
+  bottom: 28px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  max-width: 290px;
+  padding: 13px 15px;
+
+  background: rgba(7, 13, 18, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.portrait-badge > span {
+  color: #2dd4bf;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.portrait-badge strong,
+.portrait-badge small {
+  display: block;
+}
+
+.portrait-badge strong {
+  color: #eef3f7;
+  font-size: 0.78rem;
+}
+
+.portrait-badge small {
+  margin-top: 3px;
+  color: #7f8c98;
+  font-size: 0.66rem;
 }
 
 @media (min-width: 520px) {
@@ -240,64 +310,57 @@ h2 {
 }
 
 /*
- * The decorative code visual only joins once there is enough horizontal room.
- * This prevents the text column becoming unnaturally narrow on laptops,
- * zoomed browsers and intermediate monitor widths.
+ * Laptop layout: enough room for the recruiter copy and a real portrait.
  */
-@media (min-width: 1180px) {
+@media (min-width: 960px) {
   .hero {
-    min-height: 590px;
-    grid-template-columns: minmax(0, 1.12fr) minmax(330px, 0.88fr);
+    min-height: 620px;
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
     align-items: center;
-    gap: clamp(56px, 6vw, 88px);
-    padding-top: 56px;
-    padding-bottom: 56px;
+    gap: clamp(44px, 5vw, 76px);
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
 
   .hero-content {
-    max-width: 700px;
+    max-width: 680px;
   }
 
   .hero-visual {
-    position: relative;
-    min-height: 380px;
-    display: grid;
-    place-items: center;
+    display: block;
   }
 
-  .code-orbit {
-    width: 240px;
-    aspect-ratio: 1;
-    display: grid;
-    place-items: center;
-
-    border: 1px solid rgba(45, 212, 191, 0.35);
-    border-radius: 50%;
-    box-shadow:
-      0 0 90px rgba(45, 212, 191, 0.12),
-      inset 0 0 50px rgba(45, 212, 191, 0.04);
+  h1 {
+    font-size: clamp(4rem, 6vw, 5.2rem);
   }
 
-  .code-orbit span {
-    color: #2dd4bf;
-    font-size: 3.2rem;
-  }
-
-  pre {
-    position: absolute;
-    right: 0;
-    top: 86px;
-    max-width: 100%;
-    overflow: hidden;
-
-    color: rgba(45, 212, 191, 0.35);
-    font-size: 0.7rem;
-    line-height: 1.7;
-    pointer-events: none;
+  h2 {
+    font-size: clamp(2rem, 3.3vw, 2.8rem);
   }
 }
 
-@media (min-width: 1296px) {
+/*
+ * Large monitors: give both columns more breathing room without letting
+ * the content become excessively wide.
+ */
+@media (min-width: 1440px) {
+  .hero {
+    max-width: 1320px;
+    min-height: 680px;
+    grid-template-columns: minmax(0, 1.12fr) minmax(380px, 0.88fr);
+    gap: 96px;
+  }
+
+  .hero-content {
+    max-width: 720px;
+  }
+
+  .portrait-frame {
+    width: min(100%, 470px);
+  }
+}
+
+@media (min-width: 1380px) {
   .hero {
     padding-inline: 0;
   }
