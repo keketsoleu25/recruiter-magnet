@@ -35,7 +35,7 @@ const skillGroups: SkillGroup[] = [
 
 const learningStack = [
   'Docker',
-  'Containerization',
+  'Containers',
   'CI/CD Pipelines',
   'Deployment Automation',
 ]
