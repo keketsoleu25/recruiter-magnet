@@ -41,7 +41,11 @@ const closeMenu = () => {
         </a>
       </nav>
 
-      <a class="cv-button desktop-cv" href="/public/documents/Keketso_Leu_ATS_Full_Stack_Software_Developer_Resume.pdf" download>
+      <a
+        href="/Keketso_Leu_ATS_Full_Stack_Software_Developer_Resume.pdf"
+        download="Keketso_Leu_ATS_Full_Stack_Software_Developer_Resume.pdf"
+        class="cv-button"
+      >
         Download CV
       </a>
 
@@ -158,6 +162,39 @@ const closeMenu = () => {
 .links,
 .desktop-cv {
   display: none;
+}
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 16px;
+
+  color: #06110f;
+  background: #2dd4bf;
+
+  border: 1px solid #2dd4bf;
+  border-radius: 6px;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.cv-button:hover {
+  background: #5eead4;
+  border-color: #5eead4;
+  transform: translateY(-1px);
+}
+
+.cv-button:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 3px;
 }
 
 .menu-button {
