@@ -33,7 +33,12 @@
       </div>
 
       <div class="actions">
-        <a class="primary" href="/public/documents/Keketso_Leu_ATS_Full_Stack_Software_Developer_Resume.pdf" download>
+        <a
+          class="primary"
+          href="/Keketso_Leu_ATS_Full_Stack_Software_Developer_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Download CV
         </a>
 

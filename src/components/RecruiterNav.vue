@@ -43,7 +43,8 @@ const closeMenu = () => {
 
       <a
         href="/Keketso_Leu_ATS_Full_Stack_Software_Developer_Resume.pdf"
-        download="Keketso_Leu_ATS_Full_Stack_Software_Developer_Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
         class="cv-button"
       >
         Download CV
@@ -78,7 +79,13 @@ const closeMenu = () => {
         {{ item.label }}
       </a>
 
-      <a class="mobile-cv" href="/Keketso-Leu-CV.pdf" download @click="closeMenu">
+      <a
+        class="mobile-cv"
+        href="/Keketso_Leu_ATS_Full_Stack_Software_Developer_Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        @click="closeMenu"
+      >
         Download CV
       </a>
     </nav>
