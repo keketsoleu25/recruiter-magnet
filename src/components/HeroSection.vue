@@ -21,9 +21,11 @@
       <h2>Full-Stack Software Developer</h2>
 
       <p class="intro">
-        I build production-ready software across frontend, backend,
-        authentication, databases and deployment — turning practical
-        requirements into working digital systems.
+        I build and ship production-ready software—from 
+        responsive frontend and backend APIs to authentication, 
+        databases, integrations, and cloud deployment. 
+        I turn real-world business requirements into secure, 
+        maintainable systems that work.
       </p>
 
       <div class="availability">
