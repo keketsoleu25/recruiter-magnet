@@ -3,6 +3,10 @@ import RecruiterNav from './components/RecruiterNav.vue'
 import HeroSection from './components/HeroSection.vue'
 import TechMarquee from './components/TechMarquee.vue'
 import ProjectsSection from './components/ProjectsSection.vue'
+import SkillsSection from './components/SkillsSection.vue'
+import ExperienceSection from './components/ExperienceSection.vue'
+import EducationSection from './components/EducationSection.vue'
+import ContactSection from './components/ContactSection.vue'
 </script>
 
 <template>
@@ -19,6 +23,10 @@ import ProjectsSection from './components/ProjectsSection.vue'
       <HeroSection />
       <TechMarquee />
       <ProjectsSection />
+      <SkillsSection />
+      <ExperienceSection />
+      <EducationSection />  
+      <ContactSection />
     </main>
   </div>
 </template>
