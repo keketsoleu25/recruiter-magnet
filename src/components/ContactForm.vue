@@ -3,8 +3,8 @@ import { ref } from 'vue'
 
 /*
  * ContactForm
- * Lightweight recruiter contact form.
- * Submission handling will be connected to a serverless email endpoint.
+ * Sends recruiter messages to the serverless contact endpoint
+ * and provides loading, success and error feedback.
  */
 
 const name = ref('')
@@ -12,21 +12,84 @@ const email = ref('')
 const company = ref('')
 const message = ref('')
 
-const submitForm = () => {
-  console.log({
-    name: name.value,
-    email: email.value,
-    company: company.value,
-    message: message.value,
-  })
+// Honeypot field used to catch basic spambots.
+// Real users will never see or interact with this field.
+const website = ref('')
+
+const isSubmitting = ref(false)
+const successMessage = ref('')
+const errorMessage = ref('')
+
+const submitForm = async () => {
+  isSubmitting.value = true
+  successMessage.value = ''
+  errorMessage.value = ''
+
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name.value,
+        email: email.value,
+        company: company.value,
+        message: message.value,
+        website: website.value,
+      }),
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Unable to send message.')
+    }
+
+    successMessage.value =
+      'Message sent successfully. I’ll get back to you soon.'
+
+    name.value = ''
+    email.value = ''
+    company.value = ''
+    message.value = ''
+    website.value = ''
+  } catch (error) {
+    errorMessage.value =
+      error instanceof Error
+        ? error.message
+        : 'Something went wrong. Please try again.'
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
 <template>
-  <form class="contact-form" @submit.prevent="submitForm">
+  <form
+    class="contact-form"
+    @submit.prevent="submitForm"
+  >
+    <!-- Hidden anti-spam field -->
+    <div
+      class="honeypot"
+      aria-hidden="true"
+    >
+      <label for="website">Website</label>
+
+      <input
+        id="website"
+        v-model="website"
+        type="text"
+        tabindex="-1"
+        autocomplete="off"
+      />
+    </div>
+
     <div class="form-row">
       <div class="field">
         <label for="name">Name</label>
+
         <input
           id="name"
           v-model="name"
@@ -38,6 +101,7 @@ const submitForm = () => {
 
       <div class="field">
         <label for="email">Email</label>
+
         <input
           id="email"
           v-model="email"
@@ -50,6 +114,7 @@ const submitForm = () => {
 
     <div class="field">
       <label for="company">Company</label>
+
       <input
         id="company"
         v-model="company"
@@ -60,6 +125,7 @@ const submitForm = () => {
 
     <div class="field">
       <label for="message">Message</label>
+
       <textarea
         id="message"
         v-model="message"
@@ -68,14 +134,35 @@ const submitForm = () => {
       ></textarea>
     </div>
 
-    <button type="submit">
-      Send Message
+    <button
+      type="submit"
+      :disabled="isSubmitting"
+    >
+      {{ isSubmitting ? 'Sending...' : 'Send Message' }}
     </button>
+
+    <p
+      v-if="successMessage"
+      class="form-status success"
+      role="status"
+    >
+      {{ successMessage }}
+    </p>
+
+    <p
+      v-if="errorMessage"
+      class="form-status error"
+      role="alert"
+    >
+      {{ errorMessage }}
+    </p>
   </form>
 </template>
 
 <style scoped>
 .contact-form {
+  position: relative;
+
   display: grid;
   gap: 18px;
 
@@ -144,8 +231,31 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   filter: brightness(1.05);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+}
+
+.form-status {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.success {
+  color: #5eead4;
+}
+
+.error {
+  color: #fca5a5;
 }
 
 @media (max-width: 600px) {
