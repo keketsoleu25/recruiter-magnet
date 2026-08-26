@@ -82,9 +82,9 @@ while (problem) {
 <style scoped>
 .hero {
   width: 100%;
-  max-width: 1180px;
+  max-width: 1240px;
   margin-inline: auto;
-  padding: 64px 16px 44px;
+  padding: 64px 16px 52px;
 
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -93,6 +93,7 @@ while (problem) {
 
 .hero-content {
   min-width: 0;
+  max-width: 760px;
 }
 
 .status {
@@ -125,7 +126,7 @@ while (problem) {
 }
 
 .eyebrow {
-  margin: 28px 0 6px;
+  margin: 28px 0 7px;
   color: #81909d;
   font-size: 0.9rem;
 }
@@ -133,28 +134,29 @@ while (problem) {
 h1 {
   margin: 0;
   color: #f7fafc;
-  font-size: clamp(2.55rem, 14vw, 4.6rem);
+  font-size: clamp(2.7rem, 11vw, 4.8rem);
   line-height: 0.98;
-  letter-spacing: -0.055em;
-  overflow-wrap: anywhere;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
 }
 
 h2 {
-  max-width: 760px;
-  margin: 14px 0 0;
+  max-width: 720px;
+  margin: 16px 0 0;
   color: #2dd4bf;
-  font-size: clamp(1.45rem, 7vw, 2.55rem);
+  font-size: clamp(1.55rem, 6.5vw, 2.65rem);
   line-height: 1.08;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .intro {
-  max-width: 650px;
-  margin: 22px 0;
+  max-width: 660px;
+  margin: 24px 0;
 
   color: #adb7c2;
   font-size: 0.98rem;
-  line-height: 1.7;
+  line-height: 1.72;
 }
 
 .availability {
@@ -180,7 +182,7 @@ h2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  margin-top: 26px;
+  margin-top: 28px;
 }
 
 .actions a {
@@ -221,7 +223,11 @@ h2 {
 
 @media (min-width: 768px) {
   .hero {
-    padding: 80px 24px 56px;
+    padding: 84px 28px 64px;
+  }
+
+  .hero-content {
+    max-width: 820px;
   }
 
   .status {
@@ -233,25 +239,34 @@ h2 {
   }
 }
 
-@media (min-width: 900px) {
+/*
+ * The decorative code visual only joins once there is enough horizontal room.
+ * This prevents the text column becoming unnaturally narrow on laptops,
+ * zoomed browsers and intermediate monitor widths.
+ */
+@media (min-width: 1180px) {
   .hero {
-    min-height: 560px;
-    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+    min-height: 590px;
+    grid-template-columns: minmax(0, 1.12fr) minmax(330px, 0.88fr);
     align-items: center;
-    gap: clamp(40px, 6vw, 70px);
-    padding-top: 48px;
-    padding-bottom: 48px;
+    gap: clamp(56px, 6vw, 88px);
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .hero-content {
+    max-width: 700px;
   }
 
   .hero-visual {
     position: relative;
-    min-height: 350px;
+    min-height: 380px;
     display: grid;
     place-items: center;
   }
 
   .code-orbit {
-    width: min(220px, 80%);
+    width: 240px;
     aspect-ratio: 1;
     display: grid;
     place-items: center;
@@ -259,19 +274,19 @@ h2 {
     border: 1px solid rgba(45, 212, 191, 0.35);
     border-radius: 50%;
     box-shadow:
-      0 0 80px rgba(45, 212, 191, 0.12),
+      0 0 90px rgba(45, 212, 191, 0.12),
       inset 0 0 50px rgba(45, 212, 191, 0.04);
   }
 
   .code-orbit span {
     color: #2dd4bf;
-    font-size: 3rem;
+    font-size: 3.2rem;
   }
 
   pre {
     position: absolute;
     right: 0;
-    top: 80px;
+    top: 86px;
     max-width: 100%;
     overflow: hidden;
 
@@ -282,7 +297,7 @@ h2 {
   }
 }
 
-@media (min-width: 1228px) {
+@media (min-width: 1296px) {
   .hero {
     padding-inline: 0;
   }
