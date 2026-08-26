@@ -1,8 +1,15 @@
 <script setup lang="ts">
 /*
  * ProjectsSection
- * Recruiters should be able to understand the engineering value of each
- * project without opening GitHub first.
+ * ----------------
+ * Highlights the strongest engineering projects for recruiters.
+ *
+ * Each card provides:
+ * - A real product screenshot
+ * - A concise engineering description
+ * - Technology stack
+ * - Current project status
+ * - Live demo and/or GitHub repository
  */
 
 type Project = {
@@ -10,6 +17,9 @@ type Project = {
   title: string
   description: string
   technologies: string[]
+  image: string
+  imageAlt: string
+  status: 'Production' | 'In Development'
   liveUrl?: string
   githubUrl?: string
 }
@@ -19,7 +29,7 @@ const projects: Project[] = [
     number: '01',
     title: 'Facilities Management Toolbox',
     description:
-      'A modular facilities-management platform covering employee management, attendance tracking, operational dashboards and facial-recognition attendance workflows.',
+      'A modular facilities-management platform combining employee management, attendance tracking, operational dashboards and facial-recognition attendance workflows.',
     technologies: [
       'C# / .NET',
       'ASP.NET Core',
@@ -29,13 +39,13 @@ const projects: Project[] = [
       'OpenCV',
       'PHP',
     ],
-    githubUrl: 'https://github.com/keketsoleu25/facilities-toolbox',
   },
+
   {
     number: '02',
     title: 'Tech Alchemy CRM',
     description:
-      'A production-deployed full-stack CRM with clients, projects, Kanban tasks, invoicing, analytics, authentication and a client portal.',
+      'A production-deployed full-stack CRM connecting clients, projects, Kanban tasks, invoicing, analytics, authentication and a client portal.',
     technologies: [
       'Next.js',
       'React',
@@ -45,48 +55,84 @@ const projects: Project[] = [
       'Auth.js',
       'Resend',
     ],
+    image: '/images/tech-alchemy-crm.png',
+    imageAlt:
+      'Tech Alchemy CRM interface showing the production client and project management platform',
+    status: 'Production',
     liveUrl: 'https://tech-alchemy-crm.vercel.app',
-    githubUrl: 'https://github.com/keketsoleu25/tech-alchemy-crm',
+    githubUrl:
+      'https://github.com/keketsoleu25/tech-alchemy-crm',
   },
+
   {
     number: '03',
     title: 'Authentication System',
     description:
       'A standalone authentication system supporting credentials, Google OAuth, email verification and password recovery.',
-    technologies: ['Next.js', 'TypeScript', 'Auth.js', 'PostgreSQL'],
+    technologies: [
+      'Next.js',
+      'TypeScript',
+      'Auth.js',
+      'PostgreSQL',
+    ],
     liveUrl: 'https://auth-system-cyan-one.vercel.app',
-    githubUrl: 'https://github.com/keketsoleu25/Auth-System',
+    githubUrl:
+      'https://github.com/keketsoleu25/Auth-System',
   },
 ]
 </script>
 
 <template>
-  <section id="projects" class="projects-section">
+  <section
+    id="projects"
+    class="projects-section"
+  >
     <div class="section-heading">
       <p>Selected engineering work</p>
+
       <h2>Flagship Projects</h2>
       <span class="heading-line"></span>
     </div>
 
+    <!-- Project cards -->
     <div class="projects-grid">
       <article
         v-for="project in projects"
         :key="project.number"
         class="project-card"
       >
+        <!-- Card metadata -->
         <div class="project-top">
-          <span class="project-number">{{ project.number }}</span>
-          <span class="project-label">Full-Stack Project</span>
+          <span class="project-number">
+            {{ project.number }}
+          </span>
+
+          <span class="project-label">
+            Full-Stack Project
+          </span>
         </div>
 
+        <!--
+          Real project screenshot.
+          Images are stored inside /public/images.
+        -->
         <div class="project-preview">
-          <span>&lt;/&gt;</span>
+          <img
+            :src="project.image"
+            :alt="project.imageAlt"
+            loading="lazy"
+          />
         </div>
 
+        <!-- Project information -->
         <div class="project-content">
           <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
 
+          <p>
+            {{ project.description }}
+          </p>
+
+          <!-- Technology stack -->
           <div class="technology-list">
             <span
               v-for="technology in project.technologies"
@@ -96,6 +142,7 @@ const projects: Project[] = [
             </span>
           </div>
 
+          <!-- External project links -->
           <div
             v-if="project.liveUrl || project.githubUrl"
             class="project-actions"
@@ -122,6 +169,7 @@ const projects: Project[] = [
       </article>
     </div>
 
+    <!-- Main GitHub profile -->
     <a
       class="github-more"
       href="https://github.com/keketsoleu25"
@@ -134,15 +182,26 @@ const projects: Project[] = [
 </template>
 
 <style scoped>
+/*
+ * =========================================================
+ * PROJECTS SECTION
+ * =========================================================
+ */
+
 .projects-section {
-  width: 100%;
-  max-width: 1180px;
-  margin-inline: auto;
-  padding: 44px 16px 76px;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 50px 0 90px;
 }
 
+/*
+ * =========================================================
+ * SECTION HEADING
+ * =========================================================
+ */
+
 .section-heading {
-  margin-bottom: 30px;
+  margin-bottom: 35px;
   text-align: center;
 }
 
@@ -157,25 +216,37 @@ const projects: Project[] = [
 .section-heading h2 {
   margin: 0;
   color: #f4f7fa;
-  font-size: clamp(1.75rem, 8vw, 2.6rem);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
 .heading-line {
   display: block;
   width: 56px;
   height: 2px;
-  margin: 14px auto 0;
+  margin: 16px auto 0;
+
   background: #2dd4bf;
 }
 
+/*
+ * =========================================================
+ * PROJECT GRID
+ * =========================================================
+ */
+
 .projects-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
+/*
+ * =========================================================
+ * PROJECT CARD
+ * =========================================================
+ */
+
 .project-card {
-  min-width: 0;
   overflow: hidden;
 
   background: linear-gradient(
@@ -183,16 +254,18 @@ const projects: Project[] = [
     rgba(255, 255, 255, 0.045),
     rgba(255, 255, 255, 0.015)
   );
+
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 12px;
 
   transition:
     transform 180ms ease,
-    border-color 180ms ease;
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   border-color: rgba(45, 212, 191, 0.35);
 }
 
@@ -200,8 +273,8 @@ const projects: Project[] = [
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 15px 15px 0;
+
+  padding: 16px 18px 0;
 }
 
 .project-number {
@@ -212,8 +285,12 @@ const projects: Project[] = [
   display: grid;
   place-items: center;
 
+  width: 34px;
+  height: 28px;
+
   color: #06110f;
   background: #2dd4bf;
+
   border-radius: 5px;
   font-size: 0.72rem;
   font-weight: 800;
@@ -221,52 +298,76 @@ const projects: Project[] = [
 
 .project-label {
   color: #65727e;
-  font-size: 0.62rem;
-  text-align: right;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.08em;
 }
 
+/*
+ * =========================================================
+ * PROJECT SCREENSHOT
+ * =========================================================
+ */
+
 .project-preview {
-  height: 150px;
-  margin: 14px 15px;
+  height: 190px;
+  margin: 16px;
 
   display: grid;
   place-items: center;
 
   color: rgba(45, 212, 191, 0.8);
+
   background:
-    radial-gradient(circle, rgba(45, 212, 191, 0.12), transparent 55%),
+    radial-gradient(
+      circle,
+      rgba(45, 212, 191, 0.12),
+      transparent 55%
+    ),
     #070d12;
+
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
 }
 
 .project-preview span {
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
+/*
+ * =========================================================
+ * PROJECT CONTENT
+ * =========================================================
+ */
+
 .project-content {
-  padding: 3px 15px 18px;
+  padding: 3px 18px 20px;
 }
 
 .project-content h3 {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
+
   color: #f1f5f9;
-  font-size: 1.08rem;
-  line-height: 1.3;
+  font-size: 1.15rem;
 }
 
 .project-content p {
   margin: 0;
   color: #929eaa;
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   line-height: 1.65;
 }
+
+/*
+ * =========================================================
+ * TECHNOLOGIES
+ * =========================================================
+ */
 
 .technology-list {
   display: flex;
   flex-wrap: wrap;
+
   gap: 6px;
   margin-top: 16px;
 }
@@ -277,66 +378,71 @@ const projects: Project[] = [
   overflow-wrap: anywhere;
 
   color: #aeb9c3;
+
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 4px;
-  font-size: 0.67rem;
+
+  font-size: 0.69rem;
 }
+
+/*
+ * =========================================================
+ * PROJECT ACTIONS
+ * =========================================================
+ */
 
 .project-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
+  gap: 20px;
 
-  margin-top: 18px;
-  padding-top: 15px;
+  margin-top: 20px;
+  padding-top: 16px;
+
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .project-actions a {
   color: #2dd4bf;
+
   font-size: 0.78rem;
   font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
 }
+
+.project-actions a:hover {
+  color: #5eead4;
+}
+
+/*
+ * =========================================================
+ * GITHUB BUTTON
+ * =========================================================
+ */
 
 .github-more {
   width: fit-content;
   max-width: 100%;
   display: block;
 
-  margin: 28px auto 0;
-  padding: 11px 15px;
+  margin: 32px auto 0;
+  padding: 11px 17px;
 
   color: #c6d0d9;
+
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 6px;
-  font-size: 0.78rem;
-  text-align: center;
+
+  font-size: 0.8rem;
 }
 
-@media (min-width: 640px) {
-  .projects-section {
-    padding-inline: 20px;
-  }
-
-  .project-preview {
-    height: 175px;
-  }
-}
-
-@media (min-width: 768px) {
-  .projects-section {
-    padding: 50px 24px 90px;
-  }
-
-  .projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
-}
-
-@media (min-width: 1100px) {
+@media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -346,13 +452,19 @@ const projects: Project[] = [
   }
 
   .project-content p {
-    min-height: 92px;
+    min-height: auto;
   }
 }
 
+/*
+ * =========================================================
+ * MOBILE
+ * =========================================================
+ */
+
 @media (min-width: 1228px) {
   .projects-section {
-    padding-inline: 0;
+    width: min(100% - 28px, 1180px);
   }
 }
 </style>
