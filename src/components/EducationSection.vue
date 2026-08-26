@@ -24,8 +24,7 @@ const education = [
     institution: 'Simunye Secondary School',
     programme: 'National Senior Certificate',
     period: '2014',
-    description:
-      'Completed National Senior Certificate',
+    description: 'Completed the National Senior Certificate.',
   },
 ]
 </script>
@@ -47,19 +46,13 @@ const education = [
         <div class="education-top">
           <div>
             <h3>{{ item.institution }}</h3>
-            <p class="programme">
-              {{ item.programme }}
-            </p>
+            <p class="programme">{{ item.programme }}</p>
           </div>
 
-          <span class="period">
-            {{ item.period }}
-          </span>
+          <span class="period">{{ item.period }}</span>
         </div>
 
-        <p class="description">
-          {{ item.description }}
-        </p>
+        <p class="description">{{ item.description }}</p>
       </article>
     </div>
   </section>
@@ -67,44 +60,47 @@ const education = [
 
 <style scoped>
 .education-section {
-  width: min(900px, calc(100% - 40px));
-  margin: 0 auto;
-  padding: 20px 0 100px;
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  padding: 18px 16px 84px;
 }
 
 .section-heading {
+  margin-bottom: 30px;
   text-align: center;
-  margin-bottom: 35px;
 }
 
 .section-heading p {
   margin: 0 0 8px;
   color: #60707e;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 .section-heading h2 {
   margin: 0;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
+  line-height: 1.15;
 }
 
 .section-heading span {
   display: block;
-  width: 65px;
+  width: 56px;
   height: 2px;
-  margin: 16px auto 0;
+  margin: 14px auto 0;
   background: #2dd4bf;
 }
 
 .education-grid {
   display: grid;
-  gap: 15px;
+  gap: 14px;
 }
 
 .education-card {
-  padding: 24px;
+  min-width: 0;
+  padding: 20px;
 
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -113,43 +109,60 @@ const education = [
 
 .education-top {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  flex-direction: column;
+  gap: 7px;
 }
 
 .education-card h3 {
   margin: 0;
   color: #f0f4f8;
-  font-size: 1.05rem;
+  font-size: 1rem;
+  line-height: 1.35;
 }
 
 .programme {
   margin: 6px 0 0;
   color: #2dd4bf;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 .period {
   color: #788692;
-  font-size: 0.8rem;
-  white-space: nowrap;
+  font-size: 0.78rem;
 }
 
 .description {
-  margin: 16px 0 0;
+  margin: 14px 0 0;
   color: #99a6b1;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   line-height: 1.7;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 640px) {
   .education-section {
-    width: min(100% - 28px, 900px);
+    padding-inline: 20px;
+  }
+
+  .education-card {
+    padding: 24px;
   }
 
   .education-top {
-    flex-direction: column;
-    gap: 7px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .period {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 768px) {
+  .education-section {
+    padding: 20px 24px 100px;
   }
 }
 </style>

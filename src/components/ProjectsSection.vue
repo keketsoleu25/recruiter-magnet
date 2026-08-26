@@ -52,12 +52,7 @@ const projects: Project[] = [
     title: 'Authentication System',
     description:
       'A standalone authentication system supporting credentials, Google OAuth, email verification and password recovery.',
-    technologies: [
-      'Next.js',
-      'TypeScript',
-      'Auth.js',
-      'PostgreSQL',
-    ],
+    technologies: ['Next.js', 'TypeScript', 'Auth.js', 'PostgreSQL'],
     liveUrl: 'https://auth-system-cyan-one.vercel.app',
     githubUrl: 'https://github.com/keketsoleu25/Auth-System',
   },
@@ -65,14 +60,10 @@ const projects: Project[] = [
 </script>
 
 <template>
-  <section
-    id="projects"
-    class="projects-section"
-  >
+  <section id="projects" class="projects-section">
     <div class="section-heading">
       <p>Selected engineering work</p>
       <h2>Flagship Projects</h2>
-
       <span class="heading-line"></span>
     </div>
 
@@ -83,13 +74,8 @@ const projects: Project[] = [
         class="project-card"
       >
         <div class="project-top">
-          <span class="project-number">
-            {{ project.number }}
-          </span>
-
-          <span class="project-label">
-            Full-Stack Project
-          </span>
+          <span class="project-number">{{ project.number }}</span>
+          <span class="project-label">Full-Stack Project</span>
         </div>
 
         <div class="project-preview">
@@ -98,10 +84,7 @@ const projects: Project[] = [
 
         <div class="project-content">
           <h3>{{ project.title }}</h3>
-
-          <p>
-            {{ project.description }}
-          </p>
+          <p>{{ project.description }}</p>
 
           <div class="technology-list">
             <span
@@ -151,49 +134,47 @@ const projects: Project[] = [
 
 <style scoped>
 .projects-section {
-  width: min(1180px, calc(100% - 40px));
-  margin: 0 auto;
-  padding: 50px 0 90px;
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: 44px 16px 76px;
 }
 
 .section-heading {
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .section-heading p {
   margin: 0 0 8px;
-
   color: #60707e;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 .section-heading h2 {
   margin: 0;
-
   color: #f4f7fa;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-size: clamp(1.75rem, 8vw, 2.6rem);
 }
 
 .heading-line {
   display: block;
-
-  width: 65px;
+  width: 56px;
   height: 2px;
-  margin: 16px auto 0;
-
+  margin: 14px auto 0;
   background: #2dd4bf;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
 }
 
 .project-card {
+  min-width: 0;
   overflow: hidden;
 
   background: linear-gradient(
@@ -201,7 +182,6 @@ const projects: Project[] = [
     rgba(255, 255, 255, 0.045),
     rgba(255, 255, 255, 0.015)
   );
-
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 12px;
 
@@ -211,7 +191,7 @@ const projects: Project[] = [
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: rgba(45, 212, 191, 0.35);
 }
 
@@ -219,74 +199,67 @@ const projects: Project[] = [
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 16px 18px 0;
+  gap: 12px;
+  padding: 15px 15px 0;
 }
 
 .project-number {
-  display: grid;
-  place-items: center;
-
   width: 34px;
   height: 28px;
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
 
   color: #06110f;
   background: #2dd4bf;
   border-radius: 5px;
-
   font-size: 0.72rem;
   font-weight: 800;
 }
 
 .project-label {
   color: #65727e;
-  font-size: 0.68rem;
+  font-size: 0.62rem;
+  text-align: right;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
 }
 
 .project-preview {
-  height: 190px;
-  margin: 16px;
+  height: 150px;
+  margin: 14px 15px;
 
   display: grid;
   place-items: center;
 
   color: rgba(45, 212, 191, 0.8);
-
   background:
-    radial-gradient(
-      circle,
-      rgba(45, 212, 191, 0.12),
-      transparent 55%
-    ),
+    radial-gradient(circle, rgba(45, 212, 191, 0.12), transparent 55%),
     #070d12;
-
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
 }
 
 .project-preview span {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .project-content {
-  padding: 3px 18px 20px;
+  padding: 3px 15px 18px;
 }
 
 .project-content h3 {
-  margin: 0 0 12px;
-
+  margin: 0 0 10px;
   color: #f1f5f9;
-  font-size: 1.15rem;
+  font-size: 1.08rem;
+  line-height: 1.3;
 }
 
 .project-content p {
-  min-height: 92px;
   margin: 0;
-
   color: #929eaa;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   line-height: 1.65;
 }
 
@@ -294,29 +267,28 @@ const projects: Project[] = [
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-
-  margin-top: 18px;
+  margin-top: 16px;
 }
 
 .technology-list span {
-  padding: 5px 8px;
+  max-width: 100%;
+  padding: 5px 7px;
+  overflow-wrap: anywhere;
 
   color: #aeb9c3;
-
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 4px;
-
-  font-size: 0.69rem;
+  font-size: 0.67rem;
 }
 
 .project-actions {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 18px;
 
-  margin-top: 20px;
-  padding-top: 16px;
-
+  margin-top: 18px;
+  padding-top: 15px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -328,34 +300,58 @@ const projects: Project[] = [
 
 .github-more {
   width: fit-content;
-
+  max-width: 100%;
   display: block;
 
-  margin: 32px auto 0;
-  padding: 11px 17px;
+  margin: 28px auto 0;
+  padding: 11px 15px;
 
   color: #c6d0d9;
-
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 6px;
-
-  font-size: 0.8rem;
+  font-size: 0.78rem;
+  text-align: center;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 640px) {
+  .projects-section {
+    padding-inline: 20px;
+  }
+
+  .project-preview {
+    height: 175px;
+  }
+}
+
+@media (min-width: 768px) {
+  .projects-section {
+    padding: 50px 24px 90px;
+  }
+
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .project-preview {
+    height: 190px;
   }
 
   .project-content p {
-    min-height: auto;
+    min-height: 92px;
   }
 }
 
-@media (max-width: 520px) {
+@media (min-width: 1228px) {
   .projects-section {
-    width: min(100% - 28px, 1180px);
+    padding-inline: 0;
   }
 }
 </style>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import ContactForm from './ContactForm.vue'
+
 /*
  * ContactSection
- * Final recruiter conversion point.
- * Uses direct contact actions instead of a client-style project enquiry form.
+ * Final recruiter conversion point with direct contact actions and a form.
  */
 
 const currentYear = new Date().getFullYear()
@@ -31,12 +31,7 @@ const currentYear = new Date().getFullYear()
       </div>
 
       <div class="contact-actions">
-        <a
-          class="primary"
-          href="mailto:keketsoleu25@gmail.com"
-        >
-          Email Me
-        </a>
+        <a class="primary" href="mailto:keketsoleu25@gmail.com">Email Me</a>
 
         <a
           href="https://www.linkedin.com/in/keketso-leu"
@@ -56,11 +51,6 @@ const currentYear = new Date().getFullYear()
       </div>
     </div>
 
-
-    <!--
-      Recruiter contact form.
-      Kept separate from the quick email / LinkedIn / GitHub actions above.
-    -->
     <div class="form-wrapper">
       <div class="form-heading">
         <p>Prefer to send a message here?</p>
@@ -70,22 +60,15 @@ const currentYear = new Date().getFullYear()
       <ContactForm />
     </div>
 
-
-
     <footer class="footer">
-      <div>
+      <div class="footer-identity">
         <strong>Keketso Leu</strong>
         <span>Full-Stack Software Developer</span>
       </div>
 
       <div class="footer-contact">
-        <a href="mailto:keketsoleu25@gmail.com">
-          keketsoleu25@gmail.com
-        </a>
-
-        <a href="tel:+27692602709">
-          069 260 2709
-        </a>
+        <a href="mailto:keketsoleu25@gmail.com">keketsoleu25@gmail.com</a>
+        <a href="tel:+27692602709">069 260 2709</a>
       </div>
 
       <div class="footer-business">
@@ -100,101 +83,95 @@ const currentYear = new Date().getFullYear()
         </a>
       </div>
 
-      <p class="copyright">
-        © {{ currentYear }} Keketso Leu
-      </p>
+      <p class="copyright">© {{ currentYear }} Keketso Leu</p>
     </footer>
   </section>
 </template>
 
 <style scoped>
 .contact-section {
-  width: min(1180px, calc(100% - 40px));
-  margin: 0 auto;
-  padding: 20px 0 35px;
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: 18px 16px 30px;
 }
 
 .contact-card {
   display: grid;
-  grid-template-columns: 1.5fr 0.5fr;
-  gap: 50px;
-
-  padding: clamp(30px, 5vw, 55px);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  padding: 24px;
 
   background:
-    radial-gradient(
-      circle at 80% 50%,
-      rgba(45, 212, 191, 0.1),
-      transparent 35%
-    ),
+    radial-gradient(circle at 80% 50%, rgba(45, 212, 191, 0.1), transparent 35%),
     rgba(255, 255, 255, 0.025);
-
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
 }
 
-.eyebrow {
-  margin: 0 0 12px;
+.contact-copy {
+  min-width: 0;
+}
 
+.eyebrow {
+  margin: 0 0 10px;
   color: #2dd4bf;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.11em;
 }
 
 h2 {
   margin: 0;
-
   color: #f4f7fa;
-  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-size: clamp(1.85rem, 9vw, 3.2rem);
+  line-height: 1.08;
   letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
 }
 
 .intro {
   max-width: 680px;
-  margin: 20px 0 0;
-
+  margin: 18px 0 0;
   color: #9da9b5;
-  font-size: 0.95rem;
-  line-height: 1.75;
+  font-size: 0.9rem;
+  line-height: 1.7;
 }
 
 .availability {
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
-
-  margin-top: 25px;
+  gap: 8px;
+  margin-top: 22px;
 }
 
 .availability span {
-  padding: 7px 10px;
+  max-width: 100%;
+  padding: 7px 9px;
 
   color: #b7c1ca;
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 5px;
-
-  font-size: 0.73rem;
+  font-size: 0.7rem;
+  line-height: 1.4;
 }
 
 .contact-actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
 }
 
 .contact-actions a {
-  padding: 12px 18px;
-
+  width: 100%;
+  padding: 12px 16px;
   text-align: center;
 
   color: #c7d0d9;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
-
-  font-size: 0.82rem;
+  font-size: 0.8rem;
 
   transition:
     border-color 160ms ease,
@@ -217,16 +194,37 @@ h2 {
   color: #03110f;
 }
 
+.form-wrapper {
+  width: 100%;
+  max-width: 820px;
+  margin: 28px auto 0;
+}
+
+.form-heading {
+  margin-bottom: 14px;
+}
+
+.form-heading p {
+  margin: 0 0 5px;
+  color: #f1f5f9;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.form-heading span {
+  color: #7f8c98;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .footer {
   display: grid;
-  grid-template-columns: 1fr auto auto;
-  align-items: center;
-  gap: 35px;
-
-  padding: 35px 5px 0;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  padding: 30px 4px 0;
 
   color: #687581;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
 }
 
 .footer strong,
@@ -241,16 +239,18 @@ h2 {
 
 .footer-contact {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.footer-contact a,
+.footer-business a {
+  overflow-wrap: anywhere;
 }
 
 .footer-contact a:hover,
 .footer-business a:hover {
   color: #2dd4bf;
-}
-
-.footer-business {
-  text-align: right;
 }
 
 .footer-business a {
@@ -260,59 +260,69 @@ h2 {
 }
 
 .copyright {
-  grid-column: 1 / -1;
-
-  margin: 5px 0 0;
-  padding-top: 18px;
-
+  margin: 4px 0 0;
+  padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.form-wrapper {
-  max-width: 820px;
-  margin: 30px auto 0;
-}
+@media (min-width: 640px) {
+  .contact-section {
+    padding-inline: 20px;
+  }
 
-.form-heading {
-  margin-bottom: 15px;
-}
-
-.form-heading p {
-  margin: 0 0 5px;
-  color: #f1f5f9;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.form-heading span {
-  color: #7f8c98;
-  font-size: 0.8rem;
-}
-
-@media (max-width: 760px) {
   .contact-card {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    padding: 32px;
+  }
+
+  .contact-actions {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .footer {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .footer-contact {
-    flex-direction: column;
-    gap: 7px;
-  }
-
-  .footer-business {
-    text-align: left;
+  .copyright {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 520px) {
+@media (min-width: 768px) {
   .contact-section {
-    width: min(100% - 28px, 1180px);
+    padding: 20px 24px 35px;
+  }
+
+  .contact-card {
+    grid-template-columns: minmax(0, 1.5fr) minmax(180px, 0.5fr);
+    align-items: center;
+    gap: 42px;
+    padding: clamp(34px, 5vw, 55px);
+  }
+
+  .contact-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .footer-contact {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-business {
+    text-align: right;
+  }
+}
+
+@media (min-width: 1228px) {
+  .contact-section {
+    padding-inline: 0;
   }
 }
 </style>

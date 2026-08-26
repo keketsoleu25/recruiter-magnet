@@ -46,14 +46,10 @@ const experience = [
               <p class="organisation">{{ item.organisation }}</p>
             </div>
 
-            <span class="period">
-              {{ item.period }}
-            </span>
+            <span class="period">{{ item.period }}</span>
           </div>
 
-          <p class="description">
-            {{ item.description }}
-          </p>
+          <p class="description">{{ item.description }}</p>
         </div>
       </article>
     </div>
@@ -62,40 +58,40 @@ const experience = [
 
 <style scoped>
 .experience-section {
-  width: min(900px, calc(100% - 40px));
-  margin: 0 auto;
-  padding: 30px 0 80px;
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  padding: 28px 16px 72px;
 }
 
 .section-heading {
+  margin-bottom: 34px;
   text-align: center;
-  margin-bottom: 42px;
 }
 
 .section-heading p {
   margin: 0 0 8px;
   color: #60707e;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 .section-heading h2 {
   margin: 0;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
 }
 
 .section-heading span {
   display: block;
-  width: 65px;
+  width: 56px;
   height: 2px;
-  margin: 16px auto 0;
+  margin: 14px auto 0;
   background: #2dd4bf;
 }
 
 .timeline {
   position: relative;
-  margin-left: 10px;
 }
 
 .timeline::before {
@@ -104,22 +100,24 @@ const experience = [
   left: 5px;
   top: 7px;
   bottom: 10px;
-
   width: 1px;
   background: rgba(45, 212, 191, 0.25);
 }
 
 .timeline-item {
   position: relative;
-  padding-left: 42px;
-  margin-bottom: 42px;
+  margin-bottom: 36px;
+  padding-left: 32px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
 }
 
 .timeline-dot {
   position: absolute;
   left: 0;
   top: 7px;
-
   width: 11px;
   height: 11px;
 
@@ -130,43 +128,60 @@ const experience = [
 
 .timeline-header {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  flex-direction: column;
+  gap: 7px;
 }
 
 .timeline-header h3 {
   margin: 0;
   color: #f1f5f9;
-  font-size: 1.05rem;
+  font-size: 1rem;
+  line-height: 1.35;
 }
 
 .organisation {
   margin: 5px 0 0;
   color: #2dd4bf;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 .period {
   color: #778592;
-  font-size: 0.8rem;
-  white-space: nowrap;
+  font-size: 0.78rem;
 }
 
 .description {
-  margin: 14px 0 0;
+  margin: 13px 0 0;
   color: #98a5b1;
-  font-size: 0.87rem;
+  font-size: 0.85rem;
   line-height: 1.7;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 640px) {
   .experience-section {
-    width: min(100% - 28px, 900px);
+    padding-inline: 20px;
+  }
+
+  .timeline-item {
+    padding-left: 42px;
   }
 
   .timeline-header {
-    flex-direction: column;
-    gap: 7px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .period {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 768px) {
+  .experience-section {
+    padding: 30px 24px 80px;
   }
 }
 </style>

@@ -13,8 +13,7 @@ import ContactSection from './components/ContactSection.vue'
   <!--
     Recruiter Magnet
     -----------------
-    The page is intentionally recruiter-first:
-    identity -> availability -> proof -> technical breadth.
+    Recruiter-first flow: identity -> proof -> capability -> experience -> contact.
   -->
   <div class="portfolio-shell">
     <RecruiterNav />
@@ -25,7 +24,7 @@ import ContactSection from './components/ContactSection.vue'
       <ProjectsSection />
       <SkillsSection />
       <ExperienceSection />
-      <EducationSection />  
+      <EducationSection />
       <ContactSection />
     </main>
   </div>
@@ -33,41 +32,68 @@ import ContactSection from './components/ContactSection.vue'
 
 <style>
 /*
- * Global foundation.
- * Individual components will own their component-specific styles.
+ * Global responsive foundation.
+ * Components remain self-contained while sharing safe sizing defaults.
  */
-
 :root {
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-
   color: #f7fafc;
   background: #05090d;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
+  width: 100%;
+  max-width: 100%;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body,
+#app {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
   background:
     radial-gradient(circle at 70% 15%, rgba(16, 185, 129, 0.08), transparent 30%),
     #05090d;
 }
 
+main,
+section,
+article,
+div {
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 button,
-a {
+a,
+input,
+textarea {
   font: inherit;
 }
 
@@ -76,7 +102,21 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #2dd4bf;
+  outline-offset: 3px;
+}
+
+section[id] {
+  scroll-margin-top: 88px;
+}
+
 .portfolio-shell {
+  width: 100%;
   min-height: 100vh;
+  overflow: hidden;
 }
 </style>

@@ -12,56 +12,23 @@ type SkillGroup = {
 const skillGroups: SkillGroup[] = [
   {
     title: 'Frontend',
-    skills: [
-      'Vue.js',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'JavaScript',
-      'Tailwind CSS',
-      'HTML',
-      'CSS',
-    ],
+    skills: ['Vue.js', 'React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML', 'CSS'],
   },
   {
     title: 'Backend',
-    skills: [
-      'C# / .NET',
-      'ASP.NET Core',
-      'Python',
-      'PHP',
-      'REST APIs',
-    ],
+    skills: ['C# / .NET', 'ASP.NET Core', 'Python', 'PHP', 'REST APIs'],
   },
   {
     title: 'Database & ORM',
-    skills: [
-      'PostgreSQL',
-      'Prisma',
-      'Entity Framework Core',
-      'Neon',
-    ],
+    skills: ['PostgreSQL', 'Prisma', 'Entity Framework Core', 'Neon'],
   },
   {
     title: 'Auth & Security',
-    skills: [
-      'Auth.js / NextAuth',
-      'Google OAuth',
-      'Email Verification',
-      'Password Recovery',
-      'Role-Based Access',
-    ],
+    skills: ['Auth.js / NextAuth', 'Google OAuth', 'Email Verification', 'Password Recovery', 'Role-Based Access'],
   },
   {
     title: 'Tools & Deployment',
-    skills: [
-      'Git',
-      'GitHub',
-      'Vercel',
-      'Resend',
-      'PDFKit',
-      'OpenCV',
-    ],
+    skills: ['Git', 'GitHub', 'Vercel', 'Resend', 'PDFKit', 'OpenCV'],
   },
 ]
 </script>
@@ -83,10 +50,7 @@ const skillGroups: SkillGroup[] = [
         <h3>{{ group.title }}</h3>
 
         <ul>
-          <li
-            v-for="skill in group.skills"
-            :key="skill"
-          >
+          <li v-for="skill in group.skills" :key="skill">
             {{ skill }}
           </li>
         </ul>
@@ -97,41 +61,43 @@ const skillGroups: SkillGroup[] = [
 
 <style scoped>
 .skills-section {
-  width: min(1180px, calc(100% - 40px));
-  margin: 0 auto;
-  padding: 40px 0 90px;
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: 36px 16px 76px;
 }
 
 .section-heading {
+  margin-bottom: 30px;
   text-align: center;
-  margin-bottom: 34px;
 }
 
 .section-heading p {
   margin: 0 0 8px;
   color: #60707e;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 .section-heading h2 {
   margin: 0;
   color: #f4f7fa;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
 }
 
 .section-heading span {
   display: block;
-  width: 65px;
+  width: 56px;
   height: 2px;
-  margin: 16px auto 0;
+  margin: 14px auto 0;
   background: #2dd4bf;
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: minmax(0, 1fr);
+  overflow: hidden;
 
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -139,15 +105,16 @@ const skillGroups: SkillGroup[] = [
 }
 
 .skill-group {
-  padding: 25px;
+  min-width: 0;
+  padding: 20px;
 }
 
 .skill-group + .skill-group {
-  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .skill-group h3 {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   color: #eef3f7;
   font-size: 0.95rem;
 }
@@ -160,11 +127,13 @@ const skillGroups: SkillGroup[] = [
 
 .skill-group li {
   position: relative;
-  margin: 10px 0;
+  margin: 9px 0;
   padding-left: 16px;
+  overflow-wrap: anywhere;
 
   color: #9da9b5;
   font-size: 0.8rem;
+  line-height: 1.45;
 }
 
 .skill-group li::before {
@@ -175,28 +144,58 @@ const skillGroups: SkillGroup[] = [
 
   width: 5px;
   height: 5px;
-
   background: #2dd4bf;
   border-radius: 50%;
 }
 
-@media (max-width: 950px) {
+@media (min-width: 640px) {
+  .skills-section {
+    padding-inline: 20px;
+  }
+
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .skill-group + .skill-group {
-    border-left: none;
+    border-top: none;
+  }
+
+  .skill-group:nth-child(even) {
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .skill-group:nth-child(n + 3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 }
 
-@media (max-width: 560px) {
+@media (min-width: 900px) {
   .skills-section {
-    width: min(100% - 28px, 1180px);
+    padding: 40px 24px 90px;
   }
 
   .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .skill-group {
+    padding: 22px 18px;
+  }
+
+  .skill-group:nth-child(even),
+  .skill-group:nth-child(n + 3) {
+    border-top: none;
+  }
+
+  .skill-group + .skill-group {
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+@media (min-width: 1228px) {
+  .skills-section {
+    padding-inline: 0;
   }
 }
 </style>

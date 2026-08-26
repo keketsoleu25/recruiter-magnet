@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /*
  * RecruiterNav
- * Keeps recruiter actions visible without competing with the portfolio content.
+ * Mobile-first navigation that keeps identity and CV access visible at every size.
  */
 
 const navItems = [
@@ -15,62 +15,75 @@ const navItems = [
 </script>
 
 <template>
-  <header class="nav">
-    <a class="brand" href="#">
-      <span class="brand-mark">&lt;/&gt;</span>
+  <header class="nav-shell">
+    <div class="nav">
+      <a class="brand" href="#" aria-label="Keketso Leu home">
+        <span class="brand-mark">&lt;/&gt;</span>
 
-      <span>
-        <strong>Keketso <em>Leu</em></strong>
-        <small>Full-Stack Developer</small>
-      </span>
-    </a>
-
-    <nav class="links" aria-label="Main navigation">
-      <a
-        v-for="item in navItems"
-        :key="item.label"
-        :href="item.href"
-      >
-        {{ item.label }}
+        <span class="brand-copy">
+          <strong>Keketso <em>Leu</em></strong>
+          <small>Full-Stack Developer</small>
+        </span>
       </a>
-    </nav>
 
-    <a class="cv-button" href="/Keketso-Leu-CV.pdf" download>
-      Download CV
-    </a>
+      <nav class="links" aria-label="Main navigation">
+        <a v-for="item in navItems" :key="item.label" :href="item.href">
+          {{ item.label }}
+        </a>
+      </nav>
+
+      <a class="cv-button" href="/Keketso-Leu-CV.pdf" download>
+        <span class="cv-full">Download CV</span>
+        <span class="cv-short">CV</span>
+      </a>
+    </div>
   </header>
 </template>
 
 <style scoped>
+.nav-shell {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(5, 9, 13, 0.88);
+  backdrop-filter: blur(14px);
+}
+
 .nav {
-  width: min(1180px, calc(100% - 40px));
-  margin: 0 auto;
-  min-height: 76px;
+  width: 100%;
+  max-width: 1180px;
+  min-height: 68px;
+  margin-inline: auto;
+  padding-inline: 16px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
   gap: 12px;
 }
 
+.brand {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .brand-mark {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+
   display: grid;
   place-items: center;
-
-  width: 40px;
-  height: 40px;
 
   color: #2dd4bf;
   border: 1px solid rgba(45, 212, 191, 0.45);
   border-radius: 50%;
+  font-size: 0.82rem;
+}
+
+.brand-copy {
+  min-width: 0;
 }
 
 .brand strong,
@@ -79,7 +92,11 @@ const navItems = [
 }
 
 .brand strong {
-  font-size: 1rem;
+  overflow: hidden;
+  color: #f7fafc;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .brand strong em {
@@ -88,51 +105,85 @@ const navItems = [
 }
 
 .brand small {
+  display: none;
   margin-top: 3px;
   color: #84909d;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
 }
 
 .links {
-  display: flex;
-  gap: 26px;
-}
-
-.links a {
-  color: #aeb7c2;
-  font-size: 0.85rem;
-  transition: color 160ms ease;
-}
-
-.links a:hover {
-  color: #2dd4bf;
+  display: none;
 }
 
 .cv-button {
-  padding: 10px 16px;
+  flex: 0 0 auto;
+  padding: 9px 12px;
   color: #2dd4bf;
   border: 1px solid #2dd4bf;
   border-radius: 7px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 
-@media (max-width: 900px) {
-  .links {
-    display: none;
-  }
+.cv-full {
+  display: none;
 }
 
-@media (max-width: 520px) {
+@media (min-width: 480px) {
   .nav {
-    width: min(100% - 28px, 1180px);
+    padding-inline: 20px;
   }
 
   .brand small {
-    display: none;
+    display: block;
   }
 
-  .cv-button {
-    padding: 9px 11px;
+  .cv-full {
+    display: inline;
+  }
+
+  .cv-short {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav {
+    min-height: 74px;
+    padding-inline: 24px;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand strong {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .links {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 26px);
+  }
+
+  .links a {
+    color: #aeb7c2;
+    font-size: 0.8rem;
+    transition: color 160ms ease;
+  }
+
+  .links a:hover {
+    color: #2dd4bf;
+  }
+}
+
+@media (min-width: 1228px) {
+  .nav {
+    padding-inline: 0;
   }
 }
 </style>
