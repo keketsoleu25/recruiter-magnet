@@ -21,12 +21,21 @@ const education = [
       'Completed university-level studies in Computer Science and Statistics. Degree not completed.',
   },
   {
+    institution: 'Westcol TVET College — Randfontein Campus',
+    programme: 'Engineering Studies / Boilermaking',
+    period: '2015',
+    description:
+      'Completed N2 Mathematics, Engineering Science and Mechanotechnology, and progressed to N3 Mathematics.',
+  },
+  {
     institution: 'Simunye Secondary School',
     programme: 'National Senior Certificate',
     period: '2014',
-    description: 'Completed the National Senior Certificate.',
+    description:
+      'Completed the National Senior Certificate with admission to bachelor’s degree studies.',
   },
 ]
+  
 </script>
 
 <template>

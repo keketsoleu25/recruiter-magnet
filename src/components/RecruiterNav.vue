@@ -41,7 +41,7 @@ const closeMenu = () => {
         </a>
       </nav>
 
-      <a class="cv-button desktop-cv" href="/Keketso-Leu-CV.pdf" download>
+      <a class="cv-button desktop-cv" href="/public/documents/Keketso_Leu_ATS_Full_Stack_Software_Developer_Resume.pdf" download>
         Download CV
       </a>
 
