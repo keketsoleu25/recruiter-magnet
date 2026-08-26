@@ -1,17 +1,31 @@
 <script setup lang="ts">
 /*
  * ExperienceSection
- * Keeps the agency experience framed as hands-on software delivery,
- * while preserving formal workplace experience from the YES Programme.
+ * Frames the user's recent years as a continuous software-development path:
+ * formal study -> applied training -> independent product/client delivery ->
+ * structured workplace experience.
  */
 
-const experience = [
+type ExperienceItem = {
+  role: string
+  organisation: string
+  period: string
+  description: string
+  highlights?: string[]
+}
+
+const experience: ExperienceItem[] = [
   {
     role: 'Founder & Full-Stack Developer',
     organisation: 'The Tech Alchemy Lab',
     period: '2023 — Present',
     description:
-      'Design, develop and deploy web applications and digital systems for practical business requirements. Own the software lifecycle from requirements and UI implementation through backend integration, databases, testing, debugging and production deployment.',
+      'Run a one-person digital studio focused on building and shipping practical software for small businesses while developing deeper full-stack engineering capability through production work.',
+    highlights: [
+      'Built and deployed full-stack products including Tech Alchemy CRM, a standalone Authentication System and the Facilities Management Toolbox.',
+      'Delivered live client websites and digital systems from requirements and interface design through implementation, debugging and deployment.',
+      'Own the complete delivery lifecycle: frontend, backend integration, authentication, databases, production releases, maintenance and client handover.',
+    ],
   },
   {
     role: 'Digital Associate',
@@ -19,6 +33,10 @@ const experience = [
     period: '2024 — 2025',
     description:
       'Completed a 12-month professional placement focused on digital technology, workplace experience and technical development, including exposure to cybersecurity and professional technology environments.',
+    highlights: [
+      'Worked in a structured professional environment while continuing hands-on software development outside the placement.',
+      'Strengthened workplace communication, digital operations and cybersecurity awareness alongside technical growth.',
+    ],
   },
 ]
 </script>
@@ -30,6 +48,12 @@ const experience = [
       <h2>Experience</h2>
       <span></span>
     </div>
+
+    <p class="journey-note">
+      My recent path combines formal computer-science study, focused software
+      training, independent product delivery and professional workplace
+      experience — with continuous hands-on development throughout.
+    </p>
 
     <div class="timeline">
       <article
@@ -50,6 +74,12 @@ const experience = [
           </div>
 
           <p class="description">{{ item.description }}</p>
+
+          <ul v-if="item.highlights?.length" class="highlights">
+            <li v-for="highlight in item.highlights" :key="highlight">
+              {{ highlight }}
+            </li>
+          </ul>
         </div>
       </article>
     </div>
@@ -59,13 +89,13 @@ const experience = [
 <style scoped>
 .experience-section {
   width: 100%;
-  max-width: 900px;
+  max-width: 960px;
   margin-inline: auto;
   padding: 28px 16px 72px;
 }
 
 .section-heading {
-  margin-bottom: 34px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -90,6 +120,15 @@ const experience = [
   background: #2dd4bf;
 }
 
+.journey-note {
+  max-width: 760px;
+  margin: 0 auto 38px;
+  color: #82909d;
+  font-size: 0.86rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
 .timeline {
   position: relative;
 }
@@ -106,7 +145,7 @@ const experience = [
 
 .timeline-item {
   position: relative;
-  margin-bottom: 36px;
+  margin-bottom: 42px;
   padding-left: 32px;
 }
 
@@ -124,6 +163,13 @@ const experience = [
   background: #2dd4bf;
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(45, 212, 191, 0.6);
+}
+
+.timeline-content {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.022);
+  border: 1px solid rgba(255, 255, 255, 0.065);
+  border-radius: 10px;
 }
 
 .timeline-header {
@@ -153,9 +199,35 @@ const experience = [
 
 .description {
   margin: 13px 0 0;
-  color: #98a5b1;
+  color: #a0abb6;
   font-size: 0.85rem;
   line-height: 1.7;
+}
+
+.highlights {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.highlights li {
+  position: relative;
+  margin: 10px 0;
+  padding-left: 17px;
+  color: #8f9ba7;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  background: #2dd4bf;
+  border-radius: 50%;
 }
 
 @media (min-width: 640px) {
@@ -176,6 +248,10 @@ const experience = [
   .period {
     flex: 0 0 auto;
     white-space: nowrap;
+  }
+
+  .timeline-content {
+    padding: 24px;
   }
 }
 
