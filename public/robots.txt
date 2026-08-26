@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://recruiter-magnet-up6a.vercel.app/sitemap.xml
