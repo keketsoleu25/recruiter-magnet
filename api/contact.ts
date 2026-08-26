@@ -1,4 +1,6 @@
 /// <reference types="node" />
+
+import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { Resend } from 'resend'
 
 /*
@@ -9,59 +11,48 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-export default async function handler(request: Request): Promise<Response> {
-  // This endpoint only accepts POST requests.
-  if (request.method !== 'POST') {
-    return Response.json(
-      { message: 'Method not allowed.' },
-      { status: 405 },
-    )
+export default async function handler(
+  req: VercelRequest,
+  res: VercelResponse,
+) {
+  // Only POST requests are allowed.
+  if (req.method !== 'POST') {
+    return res.status(405).json({
+      message: 'Method not allowed.',
+    })
   }
 
   try {
-    const body = await request.json()
-
     const {
       name,
       email,
       company,
       message,
       website,
-    } = body
+    } = req.body ?? {}
 
     /*
      * Honeypot protection.
-     * Normal users never fill this hidden field.
+     * Real users never fill this hidden field.
      */
     if (website) {
-      return Response.json(
-        { message: 'Message sent successfully.' },
-        { status: 200 },
-      )
+      return res.status(200).json({
+        message: 'Message sent successfully.',
+      })
     }
 
-    // Basic server-side validation.
+    // Basic validation.
     if (!name || !email || !message) {
-      return Response.json(
-        {
-          message: 'Name, email and message are required.',
-        },
-        { status: 400 },
-      )
+      return res.status(400).json({
+        message: 'Name, email and message are required.',
+      })
     }
 
     const { error } = await resend.emails.send({
       from: 'Recruiter Magnet <onboarding@resend.dev>',
       to: ['keketsoleu25@gmail.com'],
-
-      /*
-       * When you reply from Gmail, the reply will go
-       * directly to the recruiter who submitted the form.
-       */
       replyTo: email,
-
       subject: `Recruiter Magnet message from ${name}`,
-
       text: `
 Name: ${name}
 Email: ${email}
@@ -75,22 +66,19 @@ ${message}
     if (error) {
       console.error('Resend error:', error)
 
-      return Response.json(
-        { message: 'Unable to send message.' },
-        { status: 500 },
-      )
+      return res.status(500).json({
+        message: 'Unable to send message.',
+      })
     }
 
-    return Response.json(
-      { message: 'Message sent successfully.' },
-      { status: 200 },
-    )
+    return res.status(200).json({
+      message: 'Message sent successfully.',
+    })
   } catch (error) {
     console.error('Contact API error:', error)
 
-    return Response.json(
-      { message: 'Something went wrong.' },
-      { status: 500 },
-    )
+    return res.status(500).json({
+      message: 'Something went wrong.',
+    })
   }
 }
