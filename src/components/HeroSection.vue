@@ -1,8 +1,8 @@
 <script setup lang="ts">
 /*
  * HeroSection
- * Recruiter-first introduction with a real profile image on larger screens.
- * Mobile remains text-first; laptops and desktops gain a balanced visual column.
+ * Recruiter-first introduction with a real profile image across devices.
+ * Mobile keeps the copy first, then shows a compact portrait below it.
  */
 </script>
 
@@ -21,10 +21,10 @@
       <h2>Full-Stack Software Developer</h2>
 
       <p class="intro">
-        I build and ship production-ready software—from 
-        responsive frontend and backend APIs to authentication, 
-        databases, integrations, and cloud deployment. 
-        I turn real-world business requirements into secure, 
+        I build and ship production-ready software—from
+        responsive frontend and backend APIs to authentication,
+        databases, integrations, and cloud deployment.
+        I turn real-world business requirements into secure,
         maintainable systems that work.
       </p>
 
@@ -91,7 +91,6 @@
   max-width: 1240px;
   margin-inline: auto;
   padding: 64px 16px 52px;
-
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 36px;
@@ -105,18 +104,14 @@
 .status {
   width: fit-content;
   max-width: 100%;
-
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
   padding: 7px 10px;
-
   color: #5eead4;
   background: rgba(45, 212, 191, 0.09);
   border: 1px solid rgba(45, 212, 191, 0.14);
   border-radius: 5px;
-
   font-size: 0.66rem;
   line-height: 1.3;
   text-transform: uppercase;
@@ -159,7 +154,6 @@ h2 {
 .intro {
   max-width: 660px;
   margin: 24px 0;
-
   color: #adb7c2;
   font-size: 0.98rem;
   line-height: 1.72;
@@ -174,12 +168,10 @@ h2 {
 .availability span {
   max-width: 100%;
   padding: 8px 10px;
-
   color: #c7d0d9;
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 6px;
-
   font-size: 0.72rem;
   line-height: 1.35;
 }
@@ -209,14 +201,16 @@ h2 {
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
+/* Mobile now shows the portrait instead of hiding it until laptop widths. */
 .hero-visual {
-  display: none;
+  display: block;
+  width: 100%;
   margin: 0;
 }
 
 .portrait-frame {
   position: relative;
-  width: min(100%, 430px);
+  width: min(82vw, 320px);
   margin-inline: auto;
 }
 
@@ -226,7 +220,6 @@ h2 {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center top;
-
   border: 1px solid rgba(45, 212, 191, 0.28);
   border-radius: 18px;
   box-shadow:
@@ -237,26 +230,24 @@ h2 {
 .portrait-frame::before {
   content: '';
   position: absolute;
-  inset: -14px 18px 22px -14px;
+  inset: -10px 12px 16px -10px;
   z-index: -1;
-
   border: 1px solid rgba(45, 212, 191, 0.16);
   border-radius: 22px;
 }
 
 .portrait-badge {
-  position: absolute;
-  left: -26px;
-  bottom: 28px;
-
+  position: relative;
+  left: auto;
+  bottom: auto;
   display: flex;
   align-items: center;
-  gap: 12px;
-
+  gap: 10px;
+  width: calc(100% - 24px);
   max-width: 290px;
-  padding: 13px 15px;
-
-  background: rgba(7, 13, 18, 0.92);
+  margin: -24px auto 0;
+  padding: 12px 13px;
+  background: rgba(7, 13, 18, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 10px;
   backdrop-filter: blur(10px);
@@ -264,7 +255,7 @@ h2 {
 
 .portrait-badge > span {
   color: #2dd4bf;
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
@@ -275,13 +266,13 @@ h2 {
 
 .portrait-badge strong {
   color: #eef3f7;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
 }
 
 .portrait-badge small {
   margin-top: 3px;
   color: #7f8c98;
-  font-size: 0.66rem;
+  font-size: 0.62rem;
 }
 
 @media (min-width: 520px) {
@@ -295,6 +286,10 @@ h2 {
 
   .actions a {
     width: auto;
+  }
+
+  .portrait-frame {
+    width: min(70vw, 360px);
   }
 }
 
@@ -316,9 +311,7 @@ h2 {
   }
 }
 
-/*
- * Laptop layout: enough room for the recruiter copy and a real portrait.
- */
+/* Laptop layout: side-by-side recruiter copy and portrait. */
 @media (min-width: 960px) {
   .hero {
     min-height: 620px;
@@ -333,8 +326,33 @@ h2 {
     max-width: 680px;
   }
 
-  .hero-visual {
-    display: block;
+  .portrait-frame {
+    width: min(100%, 430px);
+  }
+
+  .portrait-frame::before {
+    inset: -14px 18px 22px -14px;
+  }
+
+  .portrait-badge {
+    position: absolute;
+    left: -26px;
+    bottom: 28px;
+    width: auto;
+    margin: 0;
+    padding: 13px 15px;
+  }
+
+  .portrait-badge > span {
+    font-size: 1.35rem;
+  }
+
+  .portrait-badge strong {
+    font-size: 0.78rem;
+  }
+
+  .portrait-badge small {
+    font-size: 0.66rem;
   }
 
   h1 {
@@ -346,10 +364,6 @@ h2 {
   }
 }
 
-/*
- * Large monitors: give both columns more breathing room without letting
- * the content become excessively wide.
- */
 @media (min-width: 1440px) {
   .hero {
     max-width: 1320px;
