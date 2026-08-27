@@ -1,9 +1,8 @@
 <script setup lang="ts">
 /*
  * ExperienceSection
- * Frames the user's recent years as a continuous software-development path:
- * formal study -> applied training -> independent product/client delivery ->
- * structured workplace experience.
+ * Frames independent client delivery as professional software experience,
+ * alongside structured workplace experience.
  */
 
 type ExperienceItem = {
@@ -20,11 +19,11 @@ const experience: ExperienceItem[] = [
     organisation: 'The Tech Alchemy Lab',
     period: '2023 — Present',
     description:
-      'Run a one-person digital studio focused on building and shipping practical software for small businesses while developing deeper full-stack engineering capability through production work.',
+      'Run a one-person digital studio delivering production software and websites for real clients while building deeper full-stack engineering capability through practical business work.',
     highlights: [
-      'Built and deployed full-stack products including Tech Alchemy CRM, a standalone Authentication System and the Facilities Management Toolbox.',
-      'Delivered live client websites and digital systems from requirements and interface design through implementation, debugging and deployment.',
-      'Own the complete delivery lifecycle: frontend, backend integration, authentication, databases, production releases, maintenance and client handover.',
+      'Delivered three client-facing projects from requirements gathering and interface planning through implementation, debugging, deployment, revisions and handover.',
+      'Worked directly with small-business clients to translate operational and credibility needs into practical digital systems and production websites.',
+      'Own the complete delivery lifecycle across frontend development, backend integration, databases, deployment, maintenance and client support.',
     ],
   },
   {
@@ -51,7 +50,7 @@ const experience: ExperienceItem[] = [
 
     <p class="journey-note">
       My recent path combines formal computer-science study, focused software
-      training, independent product delivery and professional workplace
+      training, independent client delivery and professional workplace
       experience — with continuous hands-on development throughout.
     </p>
 
@@ -159,7 +158,6 @@ const experience: ExperienceItem[] = [
   top: 7px;
   width: 11px;
   height: 11px;
-
   background: #2dd4bf;
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(45, 212, 191, 0.6);
