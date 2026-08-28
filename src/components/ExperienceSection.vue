@@ -3,7 +3,17 @@
  * ExperienceSection
  * Frames independent client delivery as professional software experience,
  * alongside structured workplace experience.
+ *
+ * The client-work examples intentionally explain why each project existed.
+ * This keeps the portfolio focused on business problems and delivered outcomes
+ * rather than presenting client work as a list of websites.
  */
+
+type ClientProject = {
+  name: string
+  purpose: string
+  url: string
+}
 
 type ExperienceItem = {
   role: string
@@ -11,6 +21,7 @@ type ExperienceItem = {
   period: string
   description: string
   highlights?: string[]
+  clientProjects?: ClientProject[]
 }
 
 const experience: ExperienceItem[] = [
@@ -21,9 +32,28 @@ const experience: ExperienceItem[] = [
     description:
       'Run a one-person digital studio delivering production software and websites for real clients while building deeper full-stack engineering capability through practical business work.',
     highlights: [
-      'Delivered three client-facing projects from requirements gathering and interface planning through implementation, debugging, deployment, revisions and handover.',
-      'Worked directly with small-business clients to translate operational and credibility needs into practical digital systems and production websites.',
-      'Own the complete delivery lifecycle across frontend development, backend integration, databases, deployment, maintenance and client support.',
+      'Work directly with small-business clients to turn business, credibility and operational requirements into practical digital solutions.',
+      'Own the delivery lifecycle across planning, frontend development, integrations, deployment, revisions, maintenance and client support.',
+    ],
+    clientProjects: [
+      {
+        name: 'ITH Academic',
+        purpose:
+          'Created to give the organisation a professional digital presence where its academic offering and key information could be communicated clearly online.',
+        url: 'https://ithacademic.co.za',
+      },
+      {
+        name: 'Bambanani Daycare',
+        purpose:
+          'Created to strengthen the daycare’s online credibility and make it easier for parents to discover and understand the business, with additional SEO and indexing work after launch.',
+        url: 'https://bambananidaycare.co.za',
+      },
+      {
+        name: 'Afromillionial',
+        purpose:
+          'Created as a production digital presence for an external client, translating the client’s brand and communication requirements into a live web experience.',
+        url: 'https://afromillionial.co.za',
+      },
     ],
   },
   {
@@ -79,6 +109,37 @@ const experience: ExperienceItem[] = [
               {{ highlight }}
             </li>
           </ul>
+
+          <!--
+            Featured client work connects the experience claim to concrete,
+            externally delivered projects and explains the business need behind
+            each build. Flagship engineering projects remain in ProjectsSection.
+          -->
+          <div v-if="item.clientProjects?.length" class="client-work">
+            <p class="client-work-label">Featured client work</p>
+
+            <div class="client-projects">
+              <article
+                v-for="project in item.clientProjects"
+                :key="project.name"
+                class="client-project"
+              >
+                <div class="client-project-heading">
+                  <h4>{{ project.name }}</h4>
+                  <a
+                    :href="project.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    :aria-label="`Visit ${project.name} website`"
+                  >
+                    Live site ↗
+                  </a>
+                </div>
+
+                <p>{{ project.purpose }}</p>
+              </article>
+            </div>
+          </div>
         </div>
       </article>
     </div>
@@ -228,6 +289,65 @@ const experience: ExperienceItem[] = [
   border-radius: 50%;
 }
 
+.client-work {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.065);
+}
+
+.client-work-label {
+  margin: 0 0 12px;
+  color: #60707e;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.client-projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.client-project {
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.018);
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 8px;
+}
+
+.client-project-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.client-project h4 {
+  margin: 0;
+  color: #e8edf2;
+  font-size: 0.86rem;
+}
+
+.client-project a {
+  flex: 0 0 auto;
+  color: #2dd4bf;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.client-project a:hover {
+  color: #5eead4;
+}
+
+.client-project p {
+  margin: 8px 0 0;
+  color: #8f9ba7;
+  font-size: 0.77rem;
+  line-height: 1.6;
+}
+
 @media (min-width: 640px) {
   .experience-section {
     padding-inline: 20px;
@@ -256,6 +376,10 @@ const experience: ExperienceItem[] = [
 @media (min-width: 768px) {
   .experience-section {
     padding: 30px 24px 80px;
+  }
+
+  .client-projects {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 </style>
