@@ -29,8 +29,8 @@ const education = [
     status: 'Degree not completed',
     description: 'Completed university-level Computer Science and Statistics coursework.',
     modules: [
-      'CMPG 111 · Introduction to Computing and Programming · 66%',
-      'CMPG 121 · Structured Programming · 70%',
+      'CMPG 111 · Introduction to Computing and Programming (Python) · 66%',
+      'CMPG 121 · Structured Programming (C++) · 70%',
       'STTN 115 · Descriptive Statistics and Inference · 62%',
       'ECON 122 · Introduction to Macro-Economics · 51%',
       'ALDE 111 · Academic Literacy Development I · 51%',
