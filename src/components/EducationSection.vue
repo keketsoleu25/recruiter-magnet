@@ -18,7 +18,7 @@ const education = [
     programme: 'BSc Computer Science & Statistics Studies',
     period: '2019 — 2022',
     description:
-      'Completed university-level studies in Computer Science and Statistics. Degree not completed.',
+      'University-level Computer Science and Statistics studies. Confirmed completed modules: Introduction to Computing and Programming (66%), Structured Programming (70%), Descriptive Statistics and Inference (62%), Introduction to Macro-Economics (51%), Academic Literacy Development I (51%), Academic Literacy Development (50%), Understanding the Natural World (69%), and Understanding the Natural Worlds (85% — Distinction). Degree not completed.',
   },
   {
     institution: 'Westcol TVET College — Randfontein Campus',
