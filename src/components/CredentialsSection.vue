@@ -16,8 +16,7 @@
           <p class="year">2025</p>
           <h3>BET Software Hackathon 2025 — Participation</h3>
           <p>
-            Participated in the BET Software Hackathon, applying collaborative software
-            development and rapid problem-solving in a hackathon environment.
+            Completed the BET Software Hackathon 2025, including a 36-hour collaborative FinTech build focused on rapid problem-solving, teamwork and software delivery.
           </p>
           <a
             class="credential-link"
