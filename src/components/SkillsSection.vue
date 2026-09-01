@@ -29,11 +29,11 @@ const skillGroups: SkillGroup[] = [
   },
   {
     title: 'Tools & Deployment',
-    skills: ['Git', 'GitHub', 'Vercel', 'Resend', 'PDFKit', 'OpenCV'],
+    skills: ['Git', 'GitHub', 'Docker', 'Docker Compose', 'Vercel', 'Resend', 'PDFKit', 'OpenCV'],
   },
 ]
 
-const learningStack = ['Docker', 'Containers', 'CI/CD Pipelines', 'Deployment Automation']
+const learningStack = ['CI/CD Pipelines', 'Deployment Automation', 'Observability']
 </script>
 
 <template>
@@ -62,15 +62,15 @@ const learningStack = ['Docker', 'Containers', 'CI/CD Pipelines', 'Deployment Au
 
     <div class="learning-panel">
       <div class="learning-copy">
-        <p>Currently learning</p>
+        <p>Currently strengthening</p>
         <h3>DevOps & Delivery</h3>
         <span>
-          Expanding my deployment workflow beyond application hosting into
-          containers, repeatable delivery and automated pipelines.
+          Building on hands-on Docker and Docker Compose experience by strengthening
+          automated delivery, CI/CD pipelines and production observability.
         </span>
       </div>
 
-      <div class="learning-tags" aria-label="Technologies currently learning">
+      <div class="learning-tags" aria-label="Technologies currently strengthening">
         <span v-for="skill in learningStack" :key="skill">
           {{ skill }}
         </span>
