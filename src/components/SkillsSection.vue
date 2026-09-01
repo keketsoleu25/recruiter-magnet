@@ -33,7 +33,16 @@ const skillGroups: SkillGroup[] = [
   },
 ]
 
-const learningStack = ['Automated Testing', 'Observability', 'Deployment Reliability']
+const learningStack = [
+  'Azure',
+  'Integration Testing',
+  'Observability',
+  'Deployment Reliability',
+  'Angular',
+  'Kubernetes',
+  'Infrastructure as Code',
+  'Terraform',
+]
 </script>
 
 <template>
@@ -62,15 +71,15 @@ const learningStack = ['Automated Testing', 'Observability', 'Deployment Reliabi
 
     <div class="learning-panel">
       <div class="learning-copy">
-        <p>Currently strengthening</p>
-        <h3>Production Engineering</h3>
+        <p>Currently learning</p>
+        <h3>Production & Cloud Engineering</h3>
         <span>
-          Building on hands-on Docker, Docker Compose and Vercel CI/CD experience by
-          strengthening automated testing, observability and deployment reliability.
+          Expanding hands-on Docker, Docker Compose and CI/CD experience toward cloud deployment,
+          deeper testing, observability, infrastructure automation and container orchestration.
         </span>
       </div>
 
-      <div class="learning-tags" aria-label="Engineering practices currently strengthening">
+      <div class="learning-tags" aria-label="Technologies and engineering practices currently learning">
         <span v-for="skill in learningStack" :key="skill">
           {{ skill }}
         </span>
