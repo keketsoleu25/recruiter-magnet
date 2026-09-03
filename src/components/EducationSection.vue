@@ -41,9 +41,12 @@ const education = [
   },
   {
     institution: 'Westcol TVET College — Randfontein Campus',
-    programme: 'Engineering Studies / Boilermaking',
+    programme: 'Engineering Studies — N2',
     period: '2015',
-    description: 'Completed N2 Mathematics, Engineering Science and Mechanotechnology, and progressed to N3 Mathematics.',
+    description: 'Completed N2 engineering studies, including Platers Theory.',
+    modules: [
+      'Platers Theory · N2',
+    ],
   },
   {
     institution: 'Simunye Secondary School',
