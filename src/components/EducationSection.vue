@@ -43,9 +43,12 @@ const education = [
     institution: 'Westcol TVET College — Randfontein Campus',
     programme: 'Engineering Studies',
     period: '2015',
-    description: 'Completed engineering studies at N2 and N3 level.',
+    description: 'Confirmed completed subjects at N2 and N3 level.',
     modules: [
       'Platers Theory · N2',
+      'Mathematics · N2',
+      'Engineering Science · N2',
+      'Mathematics · N3',
       'Mechanotechnology · N3',
     ],
   },
