@@ -43,6 +43,16 @@
 
         <a
           class="secondary"
+          href="https://www.linkedin.com/in/keketso-leu"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View Keketso Leu on LinkedIn"
+        >
+          LinkedIn ↗
+        </a>
+
+        <a
+          class="secondary"
           href="https://github.com/keketsoleu25"
           target="_blank"
           rel="noopener noreferrer"
@@ -105,8 +115,8 @@ h2 { max-width: 720px; margin: 16px 0 0; color: #2dd4bf; font-size: clamp(1.55re
 .portrait-badge strong,.portrait-badge small { display: block; }
 .portrait-badge strong { color: #eef3f7; font-size: .75rem; }
 .portrait-badge small { margin-top: 3px; color: #7f8c98; font-size: .62rem; }
-@media (min-width:520px) { .hero { padding-inline:20px; } .actions { grid-template-columns:repeat(3,max-content); } .actions a { width:auto; } .portrait-frame { width:min(70vw,360px); } }
-@media (min-width:768px) { .hero { padding:84px 28px 64px; } .hero-content { max-width:820px; } .status { font-size:.72rem; } .intro { font-size:1.05rem; } }
+@media (min-width:520px) { .hero { padding-inline:20px; } .actions { grid-template-columns:repeat(2,max-content); } .actions a { width:auto; } .portrait-frame { width:min(70vw,360px); } }
+@media (min-width:768px) { .hero { padding:84px 28px 64px; } .hero-content { max-width:820px; } .status { font-size:.72rem; } .intro { font-size:1.05rem; } .actions { grid-template-columns:repeat(4,max-content); } }
 @media (min-width:960px) { .hero { min-height:620px; grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr); align-items:center; gap:clamp(44px,5vw,76px); padding-top:64px; padding-bottom:64px; } .hero-content { max-width:680px; } .portrait-frame { width:min(100%,430px); } .portrait-frame::before { inset:-14px 18px 22px -14px; } .portrait-badge { position:absolute; left:-26px; bottom:28px; width:auto; margin:0; padding:13px 15px; } .portrait-badge > span { font-size:1.35rem; } .portrait-badge strong { font-size:.78rem; } .portrait-badge small { font-size:.66rem; } h1 { font-size:clamp(4rem,6vw,5.2rem); } h2 { font-size:clamp(2rem,3.3vw,2.8rem); } }
 @media (min-width:1440px) { .hero { max-width:1320px; min-height:680px; grid-template-columns:minmax(0,1.12fr) minmax(380px,.88fr); gap:96px; } .hero-content { max-width:720px; } .portrait-frame { width:min(100%,470px); } }
 @media (min-width:1380px) { .hero { padding-inline:0; } }
