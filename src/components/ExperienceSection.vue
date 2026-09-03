@@ -2,11 +2,7 @@
 /*
  * ExperienceSection
  * Frames independent client delivery as professional software experience,
- * alongside structured workplace experience.
- *
- * The client-work examples intentionally explain why each project existed.
- * This keeps the portfolio focused on business problems and delivered outcomes
- * rather than presenting client work as a list of websites.
+ * alongside structured workplace and community leadership experience.
  */
 
 type ClientProject = {
@@ -67,6 +63,17 @@ const experience: ExperienceItem[] = [
       'Strengthened workplace communication, digital operations and cybersecurity awareness alongside technical growth.',
     ],
   },
+  {
+    role: 'Student Ambassador',
+    organisation: 'Feenix',
+    period: '2021',
+    description:
+      'Participated in the Feenix Student Ambassador Programme, contributing to student engagement and community-focused initiatives.',
+    highlights: [
+      'Represented the student community within the ambassador programme and supported engagement-oriented activities.',
+      'Built communication, advocacy and community participation experience alongside university studies.',
+    ],
+  },
 ]
 </script>
 
@@ -80,8 +87,8 @@ const experience: ExperienceItem[] = [
 
     <p class="journey-note">
       My recent path combines formal computer-science study, focused software
-      training, independent client delivery and professional workplace
-      experience — with continuous hands-on development throughout.
+      training, independent client delivery, professional workplace experience
+      and community leadership — with continuous hands-on development throughout.
     </p>
 
     <div class="timeline">
@@ -110,11 +117,6 @@ const experience: ExperienceItem[] = [
             </li>
           </ul>
 
-          <!--
-            Featured client work connects the experience claim to concrete,
-            externally delivered projects and explains the business need behind
-            each build. Flagship engineering projects remain in ProjectsSection.
-          -->
           <div v-if="item.clientProjects?.length" class="client-work">
             <p class="client-work-label">Featured client work</p>
 
