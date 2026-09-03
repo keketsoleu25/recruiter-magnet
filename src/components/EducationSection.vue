@@ -50,6 +50,15 @@ const education = [
     programme: 'National Senior Certificate',
     period: '2014',
     description: 'Completed the National Senior Certificate with admission to bachelor’s degree studies.',
+    modules: [
+      'Sesotho Home Language · 73% · Level 6',
+      'English First Additional Language · 53% · Level 4',
+      'Mathematics · 61% · Level 5',
+      'Life Orientation · 55% · Level 4',
+      'Geography · 59% · Level 4',
+      'Life Sciences · 69% · Level 5',
+      'Physical Sciences · 71% · Level 6',
+    ],
   },
 ]
 </script>
