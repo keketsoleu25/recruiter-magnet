@@ -2,7 +2,7 @@
 /*
  * SkillsSection
  * Groups technologies by how recruiters typically scan technical capability,
- * while keeping active learning clearly separate from production experience.
+ * while keeping active learning clearly separate from demonstrated experience.
  */
 
 type SkillGroup = {
@@ -34,14 +34,15 @@ const skillGroups: SkillGroup[] = [
 ]
 
 const learningStack = [
+  'Playwright',
+  'Vitest',
   'Azure',
-  'Integration Testing',
-  'Observability',
-  'Deployment Reliability',
+  'Redis',
+  'System Design',
+  'WebSockets',
+  'OpenAI API Integrations',
   'Angular',
   'Kubernetes',
-  'Infrastructure as Code',
-  'Terraform',
 ]
 </script>
 
@@ -71,15 +72,16 @@ const learningStack = [
 
     <div class="learning-panel">
       <div class="learning-copy">
-        <p>Currently learning</p>
+        <p>Currently strengthening & learning</p>
         <h3>Production & Cloud Engineering</h3>
         <span>
-          Expanding hands-on Docker, Docker Compose and CI/CD experience toward cloud deployment,
-          deeper testing, observability, infrastructure automation and container orchestration.
+          Docker, Docker Compose and CI/CD are demonstrated skills and are now being tightened for
+          production reliability. Current growth areas focus on automated testing, cloud engineering,
+          caching, system design, real-time applications and production-ready AI integrations.
         </span>
       </div>
 
-      <div class="learning-tags" aria-label="Technologies and engineering practices currently learning">
+      <div class="learning-tags" aria-label="Technologies and engineering practices currently strengthening or learning">
         <span v-for="skill in learningStack" :key="skill">
           {{ skill }}
         </span>
