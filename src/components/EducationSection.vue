@@ -44,12 +44,15 @@ const education = [
     programme: 'Engineering Studies',
     period: '2015',
     description: 'Confirmed completed subjects at N2 and N3 level.',
-    modules: [
-      'Platers Theory · N2',
-      'Mathematics · N2',
-      'Engineering Science · N2',
-      'Mathematics · N3',
-      'Mechanotechnology · N3',
+    subjectGroups: [
+      {
+        level: 'N2 — Completed',
+        subjects: ['Platers Theory', 'Mathematics', 'Engineering Science'],
+      },
+      {
+        level: 'N3 — Completed',
+        subjects: ['Mathematics', 'Mechanotechnology'],
+      },
     ],
   },
   {
@@ -99,6 +102,17 @@ const education = [
             </div>
           </div>
         </div>
+
+        <div v-if="item.subjectGroups" class="subject-groups">
+          <div v-for="group in item.subjectGroups" :key="group.level" class="subject-group">
+            <p class="subject-level">{{ group.level }}</p>
+            <div class="module-grid">
+              <div v-for="subject in group.subjects" :key="`${group.level}-${subject}`" class="module-chip">
+                {{ subject }}
+              </div>
+            </div>
+          </div>
+        </div>
       </article>
     </div>
   </section>
@@ -118,8 +132,10 @@ const education = [
 .period { color: #788692; font-size: .78rem; }
 .status { display: inline-block; margin-top: 12px; padding: 4px 8px; color: #b7c2cb; font-size: .72rem; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; }
 .description { margin: 14px 0 0; color: #99a6b1; font-size: .84rem; line-height: 1.7; }
-.modules { margin-top: 18px; }
-.modules-title { margin: 0 0 10px; color: #dce4ea; font-size: .78rem; font-weight: 600; }
+.modules, .subject-groups { margin-top: 18px; }
+.modules-title, .subject-level { margin: 0 0 10px; color: #dce4ea; font-size: .78rem; font-weight: 600; }
+.subject-group + .subject-group { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.06); }
+.subject-level { color: #2dd4bf; letter-spacing: .03em; }
 .module-grid { display: grid; gap: 8px; }
 .module-chip { padding: 9px 10px; color: #aeb9c2; font-size: .74rem; line-height: 1.45; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); border-radius: 7px; }
 @media (min-width: 640px) {
