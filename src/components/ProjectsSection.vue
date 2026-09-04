@@ -59,7 +59,7 @@ const projects: Project[] = [
     description:
       'A South Africa-focused job intelligence platform that discovers roles, normalises source data and helps evaluate whether an opportunity is worth applying for.',
     technologies: ['Next.js', 'React', 'TypeScript', 'Prisma', 'PostgreSQL', 'Zod', 'Vercel'],
-    image: '/images/alchemy-job-finder.png',
+    image: '/images/job-finder.png',
     imageAlt: 'Alchemy Job Finder interface showing job opportunities in South Africa',
     status: 'In Development',
     liveUrl: 'https://alchemy-job-finder.vercel.app',
