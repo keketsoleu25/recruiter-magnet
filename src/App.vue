@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import RecruiterNav from './components/RecruiterNav.vue'
 import HeroSection from './components/HeroSection.vue'
+import TrustedByCarousel from './components/TrustedByCarousel.vue'
 import TechMarquee from './components/TechMarquee.vue'
 import ProjectsSection from './components/ProjectsSection.vue'
 import SkillsSection from './components/SkillsSection.vue'
@@ -22,6 +23,7 @@ import ContactSection from './components/ContactSection.vue'
 
     <main>
       <HeroSection />
+      <TrustedByCarousel />
       <TechMarquee />
       <ProjectsSection />
       <SkillsSection />
