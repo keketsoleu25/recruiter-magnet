@@ -23,9 +23,10 @@ const clients = [
     note: 'Brand website',
   },
   {
-    name: 'GTV FMS',
-    mark: 'GTV',
-    note: 'Facilities web presence',
+    name: 'Ailwei Devine',
+    mark: 'AD',
+    note: 'Facilities & landscaping website',
+    url: 'https://ail-devine.vercel.app/',
   },
   {
     name: 'Tech Alchemy CRM',
@@ -53,10 +54,14 @@ const clients = [
           class="client-group"
           :aria-hidden="group === 2"
         >
-          <article
+          <component
+            :is="client.url ? 'a' : 'article'"
             v-for="client in clients"
             :key="`${group}-${client.name}`"
             class="client-logo"
+            :href="client.url"
+            :target="client.url ? '_blank' : undefined"
+            :rel="client.url ? 'noopener noreferrer' : undefined"
           >
             <span class="client-mark" :class="{ 'has-image': client.image }">
               <img
@@ -71,7 +76,7 @@ const clients = [
               <strong>{{ client.name }}</strong>
               <small>{{ client.note }}</small>
             </span>
-          </article>
+          </component>
         </div>
       </div>
 
@@ -144,10 +149,16 @@ h2 {
   gap: 11px;
   min-width: 230px;
   padding: 13px 15px;
+  color: inherit;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   background: rgba(5, 9, 13, 0.72);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  text-decoration: none;
+}
+
+a.client-logo:hover {
+  border-color: rgba(45, 212, 191, 0.28);
 }
 
 .client-mark {
