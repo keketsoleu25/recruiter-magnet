@@ -15,11 +15,11 @@ const clients = [
   {
     name: 'Ailwei Devine',
     image: '/images/ailwei-devine-logo.png',
-    note: 'Trading & Projects',
+    note: 'Business Website',
     href: 'https://ail-devine.vercel.app/'
   },
   {
-    name: 'ITH Academic',
+    name: 'ITH Academic Foundation',
     image: '/images/ith-academic-logo.png',
     note: 'Student Foundation',
     href: 'https://ithacademic.co.za'
@@ -27,13 +27,13 @@ const clients = [
   {
     name: 'Afromillionial',
     image: '/images/afromillionial-logo.png',
-    note: 'Digital Growth',
+    note: 'Business Website',
     href: 'https://afromillionial.co.za'
   },
   {
     name: 'Tech Alchemy CRM',
-    image: '/images/tech-alchemy-mark.svg',
-    note: 'Client & Project Management',
+    image: '/images/tech-alchemy-crm.png',
+    note: 'Business Management Platform',
     href: 'https://tech-alchemy-crm.vercel.app'
   }
 ]
@@ -43,7 +43,8 @@ const clients = [
   <section class="trusted" aria-labelledby="trusted-title">
     <div class="trusted-header">
       <p class="eyebrow">Trusted by</p>
-      <h2 id="trusted-title">Client and project work already in the wild</h2>
+      <h2 id="trusted-title">Trusted by businesses across South Africa</h2>
+      <p class="tagline">Production software, websites and digital solutions delivered for real clients.</p>
     </div>
 
     <div class="carousel" aria-label="Trusted clients and delivered projects">
@@ -56,29 +57,26 @@ const clients = [
           class="client-group"
           :aria-hidden="group === 2"
         >
-          <component
-            :is="client.url ? 'a' : 'article'"
+          <a
             v-for="client in clients"
             :key="`${group}-${client.name}`"
             class="client-logo"
-            :href="client.url"
-            :target="client.url ? '_blank' : undefined"
-            :rel="client.url ? 'noopener noreferrer' : undefined"
+            :href="client.href"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span class="client-mark" :class="{ 'has-image': client.image }">
+            <span class="client-mark">
               <img
-                v-if="client.image"
                 :src="client.image"
                 :alt="`${client.name} logo`"
                 loading="lazy"
               />
-              <template v-else>{{ client.mark }}</template>
             </span>
             <span class="client-copy">
               <strong>{{ client.name }}</strong>
               <small>{{ client.note }}</small>
             </span>
-          </component>
+          </a>
         </div>
       </div>
 
@@ -109,10 +107,18 @@ const clients = [
 
 h2 {
   max-width: 620px;
-  margin: 0;
+  margin: 0 0 8px 0;
   color: #eef3f7;
   font-size: clamp(1.35rem, 5vw, 2rem);
   line-height: 1.12;
+}
+
+.tagline {
+  max-width: 620px;
+  margin: 0;
+  color: #8794a1;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .carousel {
@@ -157,34 +163,26 @@ h2 {
   border-radius: 8px;
   background: rgba(5, 9, 13, 0.72);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-.client-logo[href] {
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.client-logo[href]:hover {
-  border-color: rgba(45, 212, 191, 0.32);
+.client-logo:hover {
+  transform: translateY(-4px);
+  border-color: #2dd4bf;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 12px 24px rgba(45, 212, 191, 0.15);
 }
 
 .client-mark {
   display: grid;
-  width: 44px;
-  height: 44px;
+  width: 72px;
+  height: 72px;
   flex: 0 0 auto;
   overflow: hidden;
   place-items: center;
-  color: #031513;
-  background: #2dd4bf;
-  border-radius: 8px;
-  font-size: 0.75rem;
-  font-weight: 900;
-  letter-spacing: 0.02em;
-}
-
-.client-mark.has-image {
-  background: #071017;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 6px;
+  background: white;
+  border-radius: 10px;
 }
 
 .client-mark img {
@@ -207,7 +205,6 @@ h2 {
   color: #eef3f7;
   font-size: 0.83rem;
   line-height: 1.25;
-  white-space: nowrap;
 }
 
 .client-copy small {
@@ -215,7 +212,6 @@ h2 {
   color: #8794a1;
   font-size: 0.68rem;
   line-height: 1.3;
-  white-space: nowrap;
 }
 
 .fade {
