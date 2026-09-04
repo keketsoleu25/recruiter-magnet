@@ -65,7 +65,7 @@
     <figure class="hero-visual">
       <div class="portrait-frame">
         <img
-          src="https://the-tech-alchemy-lab.vercel.app/images/profile_photo.jpg"
+          src="/images/keketso_profile.jpeg"
           alt="Keketso Leu"
           class="portrait"
           loading="eager"
