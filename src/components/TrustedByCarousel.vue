@@ -8,35 +8,34 @@
 const clients = [
   {
     name: 'Bambanani Daycare',
-    mark: 'BD',
     image: '/images/bambanani_logo.jpeg',
-    note: 'Daycare website',
-  },
-  {
-    name: 'ITH Academic Foundation',
-    mark: 'ITH',
-    image: '/images/ith-academic-logo.png',
-    note: 'Education website',
-  },
-  {
-    name: 'Afromillionial',
-    mark: 'AM',
-    image: '/images/afromillionial-logo.png',
-    note: 'Brand website',
+    note: 'Early Childhood Development',
+    href: 'https://bambananidaycare.co.za'
   },
   {
     name: 'Ailwei Devine',
-    mark: 'AD',
     image: '/images/ailwei-devine-logo.png',
-    note: 'Facilities & landscaping website',
-    url: 'https://ail-devine.vercel.app/',
+    note: 'Trading & Projects',
+    href: 'https://ail-devine.vercel.app/'
+  },
+  {
+    name: 'ITH Academic',
+    image: '/images/ith-academic-logo.png',
+    note: 'Student Foundation',
+    href: 'https://ithacademic.co.za'
+  },
+  {
+    name: 'Afromillionial',
+    image: '/images/afromillionial-logo.png',
+    note: 'Digital Growth',
+    href: 'https://afromillionial.co.za'
   },
   {
     name: 'Tech Alchemy CRM',
-    mark: 'CRM',
-    image: '/images/tech-alchemy-crm.png',
-    note: 'Business platform',
-  },
+    image: '/images/tech-alchemy-mark.svg',
+    note: 'Client & Project Management',
+    href: 'https://tech-alchemy-crm.vercel.app'
+  }
 ]
 </script>
 
