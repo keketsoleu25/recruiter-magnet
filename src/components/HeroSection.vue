@@ -20,7 +20,7 @@
       <p class="intro">
         I build business software across frontend, APIs, databases and deployment.
         Recent work includes a Dockerized ASP.NET Core facilities platform, a
-        full-stack CRM and production websites delivered for real clients.
+        production CRM and client websites deployed to the web.
       </p>
 
       <div class="availability">
