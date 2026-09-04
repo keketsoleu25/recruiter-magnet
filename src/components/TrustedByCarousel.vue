@@ -1,14 +1,15 @@
 <script setup lang="ts">
 /*
  * TrustedByCarousel
- * Client proof strip. Replace `mark` with logo image paths later when official
- * client logo files are available in /public.
+ * Client proof strip. Uses supplied client artwork where available and falls
+ * back to compact initials for clients without a logo asset in /public.
  */
 
 const clients = [
   {
     name: 'Bambanani Daycare',
     mark: 'BD',
+    image: '/images/bambanani_logo.jpeg',
     note: 'Daycare website',
   },
   {
@@ -29,6 +30,7 @@ const clients = [
   {
     name: 'Tech Alchemy CRM',
     mark: 'CRM',
+    image: '/images/tech-alchemy-crm.png',
     note: 'Business platform',
   },
 ]
@@ -56,7 +58,15 @@ const clients = [
             :key="`${group}-${client.name}`"
             class="client-logo"
           >
-            <span class="client-mark">{{ client.mark }}</span>
+            <span class="client-mark" :class="{ 'has-image': client.image }">
+              <img
+                v-if="client.image"
+                :src="client.image"
+                :alt="`${client.name} logo`"
+                loading="lazy"
+              />
+              <template v-else>{{ client.mark }}</template>
+            </span>
             <span class="client-copy">
               <strong>{{ client.name }}</strong>
               <small>{{ client.note }}</small>
@@ -145,6 +155,7 @@ h2 {
   width: 44px;
   height: 44px;
   flex: 0 0 auto;
+  overflow: hidden;
   place-items: center;
   color: #031513;
   background: #2dd4bf;
@@ -152,6 +163,18 @@ h2 {
   font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.02em;
+}
+
+.client-mark.has-image {
+  background: #071017;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.client-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .client-copy {
