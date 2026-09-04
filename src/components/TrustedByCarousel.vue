@@ -112,7 +112,7 @@ h2 {
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: client-marquee 42s linear infinite;
+  animation: client-marquee-reverse 42s linear infinite;
 }
 
 .carousel:hover .track,
@@ -197,13 +197,13 @@ h2 {
   background: linear-gradient(to left, #05090d, transparent);
 }
 
-@keyframes client-marquee {
+@keyframes client-marquee-reverse {
   from {
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(0);
   }
 }
 
