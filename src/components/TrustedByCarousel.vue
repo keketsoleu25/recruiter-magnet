@@ -15,16 +15,19 @@ const clients = [
   {
     name: 'ITH Academic Foundation',
     mark: 'ITH',
+    image: '/images/ith-academic-logo.png',
     note: 'Education website',
   },
   {
     name: 'Afromillionial',
     mark: 'AM',
+    image: '/images/afromillionial-logo.png',
     note: 'Brand website',
   },
   {
     name: 'Ailwei Devine',
     mark: 'AD',
+    image: '/images/ailwei-devine-logo.png',
     note: 'Facilities & landscaping website',
     url: 'https://ail-devine.vercel.app/',
   },
@@ -150,15 +153,19 @@ h2 {
   min-width: 230px;
   padding: 13px 15px;
   color: inherit;
+  text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   background: rgba(5, 9, 13, 0.72);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  text-decoration: none;
 }
 
-a.client-logo:hover {
-  border-color: rgba(45, 212, 191, 0.28);
+.client-logo[href] {
+  cursor: pointer;
+}
+
+.client-logo[href]:hover {
+  border-color: rgba(45, 212, 191, 0.32);
 }
 
 .client-mark {
