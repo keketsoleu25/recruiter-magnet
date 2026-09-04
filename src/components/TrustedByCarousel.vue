@@ -14,25 +14,25 @@ const clients = [
   },
   {
     name: 'Ailwei Devine',
-    image: '/images/ailwei-devine-logo.png',
+    image: '/images/ailwei_logo.jpeg',
     note: 'Business Website',
     href: 'https://ail-devine.vercel.app/'
   },
   {
     name: 'ITH Academic Foundation',
-    image: '/images/ith-academic-logo.png',
+    image: '/images/ith-academic-logo.jpg',
     note: 'Student Foundation',
     href: 'https://ithacademic.co.za'
   },
   {
     name: 'Afromillionial',
-    image: '/images/afromillionial-logo.png',
+    image: '/images/afromillionial-logo.jpg',
     note: 'Business Website',
     href: 'https://afromillionial.co.za'
   },
   {
     name: 'Tech Alchemy CRM',
-    image: '/images/tech-alchemy-crm.png',
+    image: '/images/tech-alchemy-mark.svg',
     note: 'Business Management Platform',
     href: 'https://tech-alchemy-crm.vercel.app'
   }
