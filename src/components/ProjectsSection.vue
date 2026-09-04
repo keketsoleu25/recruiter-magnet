@@ -59,7 +59,8 @@ const projects: Project[] = [
     description:
       'A South Africa-focused job intelligence platform that discovers roles, normalises source data and helps evaluate whether an opportunity is worth applying for.',
     technologies: ['Next.js', 'React', 'TypeScript', 'Prisma', 'PostgreSQL', 'Zod', 'Vercel'],
-    previewLabel: 'SA Opportunity Intelligence',
+    image: '/images/alchemy-job-finder.png',
+    imageAlt: 'Alchemy Job Finder interface showing job opportunities in South Africa',
     status: 'In Development',
     liveUrl: 'https://alchemy-job-finder.vercel.app',
     githubUrl: 'https://github.com/keketsoleu25/alchemy-job-finder',
@@ -75,7 +76,7 @@ const projects: Project[] = [
         <div class="project-top"><span class="project-number">{{ project.number }}</span><span class="status" :class="project.status === 'Production' ? 'production' : 'development'">{{ project.status }}</span></div>
         <div class="project-preview">
           <img v-if="project.image" :src="project.image" :alt="project.imageAlt" loading="lazy" />
-          <div v-else class="project-placeholder" aria-hidden="true"><span>03</span><strong>Alchemy Job Finder</strong><small>{{ project.previewLabel }}</small></div>
+          <div v-else class="project-placeholder" aria-hidden="true"><span>03</span><strong>Alchemy Job Finder</strong><small>{{ project.imageAlt }}</small></div>
         </div>
         <div class="project-content">
           <span class="project-label">Full-Stack Project</span><h3>{{ project.title }}</h3><p>{{ project.description }}</p>
