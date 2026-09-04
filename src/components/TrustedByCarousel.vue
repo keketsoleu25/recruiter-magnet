@@ -1,34 +1,40 @@
 <script setup lang="ts">
 /*
  * TrustedByCarousel
- * Client proof strip. Replace `mark` with logo image paths later when official
- * client logo files are available in /public.
+ * Client proof strip. Uses supplied client artwork where available and falls
+ * back to compact initials for clients without a logo asset in /public.
  */
 
 const clients = [
   {
     name: 'Bambanani Daycare',
     mark: 'BD',
+    image: '/images/bambanani_logo.jpeg',
     note: 'Daycare website',
   },
   {
     name: 'ITH Academic Foundation',
     mark: 'ITH',
+    image: '/images/ith-academic-logo.png',
     note: 'Education website',
   },
   {
     name: 'Afromillionial',
     mark: 'AM',
+    image: '/images/afromillionial-logo.png',
     note: 'Brand website',
   },
   {
-    name: 'GTV FMS',
-    mark: 'GTV',
-    note: 'Facilities web presence',
+    name: 'Ailwei Devine',
+    mark: 'AD',
+    image: '/images/ailwei-devine-logo.png',
+    note: 'Facilities & landscaping website',
+    url: 'https://ail-devine.vercel.app/',
   },
   {
     name: 'Tech Alchemy CRM',
     mark: 'CRM',
+    image: '/images/tech-alchemy-crm.png',
     note: 'Business platform',
   },
 ]
@@ -51,17 +57,29 @@ const clients = [
           class="client-group"
           :aria-hidden="group === 2"
         >
-          <article
+          <component
+            :is="client.url ? 'a' : 'article'"
             v-for="client in clients"
             :key="`${group}-${client.name}`"
             class="client-logo"
+            :href="client.url"
+            :target="client.url ? '_blank' : undefined"
+            :rel="client.url ? 'noopener noreferrer' : undefined"
           >
-            <span class="client-mark">{{ client.mark }}</span>
+            <span class="client-mark" :class="{ 'has-image': client.image }">
+              <img
+                v-if="client.image"
+                :src="client.image"
+                :alt="`${client.name} logo`"
+                loading="lazy"
+              />
+              <template v-else>{{ client.mark }}</template>
+            </span>
             <span class="client-copy">
               <strong>{{ client.name }}</strong>
               <small>{{ client.note }}</small>
             </span>
-          </article>
+          </component>
         </div>
       </div>
 
@@ -134,10 +152,20 @@ h2 {
   gap: 11px;
   min-width: 230px;
   padding: 13px 15px;
+  color: inherit;
+  text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   background: rgba(5, 9, 13, 0.72);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.client-logo[href] {
+  cursor: pointer;
+}
+
+.client-logo[href]:hover {
+  border-color: rgba(45, 212, 191, 0.32);
 }
 
 .client-mark {
@@ -145,6 +173,7 @@ h2 {
   width: 44px;
   height: 44px;
   flex: 0 0 auto;
+  overflow: hidden;
   place-items: center;
   color: #031513;
   background: #2dd4bf;
@@ -152,6 +181,18 @@ h2 {
   font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.02em;
+}
+
+.client-mark.has-image {
+  background: #071017;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.client-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .client-copy {
