@@ -2,7 +2,7 @@
 const clients = [
   {
     name: 'Youth Employment Service (YES)',
-    image: 'https://www.yes4youth.co.za/wp-content/uploads/2022/05/YES-Logo.png',
+    image: '/images/YES_LOGO.png',
     note: 'Quality Work Experience Programme',
     href: 'https://www.yes4youth.co.za'
   },
