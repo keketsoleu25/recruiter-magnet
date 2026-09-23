@@ -21,7 +21,7 @@ import ContactSection from './components/ContactSection.vue'
   <div class="portfolio-shell">
     <RecruiterNav />
 
-    <main>
+    <main class="motion-main">
       <HeroSection />
       <TrustedByCarousel />
       <TechMarquee />
@@ -124,5 +124,24 @@ section[id] {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
+}
+.motion-main > :not(:first-child) {
+  animation: section-enter 700ms cubic-bezier(.22,1,.36,1) both;
+  animation-timeline: view();
+  animation-range: entry 8% cover 28%;
+}
+
+@keyframes section-enter {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 </style>
