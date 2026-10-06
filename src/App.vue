@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection.vue'
 import TrustedByCarousel from './components/TrustedByCarousel.vue'
 import TechMarquee from './components/TechMarquee.vue'
 import ProjectsSection from './components/ProjectsSection.vue'
+import PublishedBookSection from './components/PublishedBookSection.vue'
 import SkillsSection from './components/SkillsSection.vue'
 import ExperienceSection from './components/ExperienceSection.vue'
 import EducationSection from './components/EducationSection.vue'
@@ -26,6 +27,7 @@ import ContactSection from './components/ContactSection.vue'
       <TrustedByCarousel />
       <TechMarquee />
       <ProjectsSection />
+      <PublishedBookSection />
       <SkillsSection />
       <ExperienceSection />
       <EducationSection />
