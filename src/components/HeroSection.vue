@@ -13,6 +13,21 @@
         Open to full-time opportunities
       </div>
 
+      <a
+        class="codespace-feature"
+        href="https://www.codespace.co.za/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View CodeSpace"
+      >
+        <span class="codespace-mark">CS</span>
+        <span class="codespace-copy">
+          <strong>Featured on CodeSpace Academy</strong>
+          <small>Graduate Projects Showcase · 2 shipped projects</small>
+        </span>
+        <span class="codespace-arrow">↗</span>
+      </a>
+
       <p class="eyebrow">Hello, I'm</p>
       <h1>Keketso Leu</h1>
       <h2>Full-Stack Software Developer</h2>
@@ -95,11 +110,19 @@
 }
 .hero-content { min-width: 0; max-width: 760px; }
 .hero-content > * { opacity:0; animation:hero-rise 650ms cubic-bezier(.22,1,.36,1) forwards; }
-.hero-content > :nth-child(1){animation-delay:80ms}.hero-content > :nth-child(2){animation-delay:150ms}.hero-content > :nth-child(3){animation-delay:220ms}.hero-content > :nth-child(4){animation-delay:290ms}.hero-content > :nth-child(5){animation-delay:360ms}.hero-content > :nth-child(6){animation-delay:430ms}.hero-content > :nth-child(7){animation-delay:500ms}
+.hero-content > :nth-child(1){animation-delay:80ms}.hero-content > :nth-child(2){animation-delay:150ms}.hero-content > :nth-child(3){animation-delay:220ms}.hero-content > :nth-child(4){animation-delay:290ms}.hero-content > :nth-child(5){animation-delay:360ms}.hero-content > :nth-child(6){animation-delay:430ms}.hero-content > :nth-child(7){animation-delay:500ms}.hero-content > :nth-child(8){animation-delay:570ms}
 @keyframes hero-rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
 .status { width: fit-content; max-width: 100%; display: inline-flex; align-items: center; gap: 8px; padding: 7px 10px; color: #5eead4; background: rgba(45,212,191,.09); border: 1px solid rgba(45,212,191,.14); border-radius: 5px; font-size: .66rem; line-height: 1.3; text-transform: uppercase; letter-spacing: .05em; }
 .status-dot { width: 7px; height: 7px; flex: 0 0 auto; background: #2dd4bf; border-radius: 50%; animation:status-pulse 2s ease-in-out infinite; }
 @keyframes status-pulse { 50% { box-shadow:0 0 0 7px rgba(45,212,191,0); transform:scale(1.12); } 0%,100% { box-shadow:0 0 0 0 rgba(45,212,191,.22); } }
+.codespace-feature { width: fit-content; max-width: 100%; display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; padding: 10px 12px; color: #dce8e7; background: linear-gradient(135deg, rgba(45,212,191,.10), rgba(255,255,255,.035)); border: 1px solid rgba(45,212,191,.22); border-radius: 9px; box-shadow: 0 10px 28px rgba(0,0,0,.14); transition: transform 180ms ease, border-color 180ms ease, background 180ms ease; }
+.codespace-feature:hover { transform: translateY(-2px); border-color: rgba(45,212,191,.42); background: linear-gradient(135deg, rgba(45,212,191,.14), rgba(255,255,255,.045)); }
+.codespace-mark { display: grid; place-items: center; width: 32px; height: 32px; flex: 0 0 auto; color: #04110f; background: #2dd4bf; border-radius: 7px; font-size: .66rem; font-weight: 800; letter-spacing: -.02em; }
+.codespace-copy { min-width: 0; }
+.codespace-copy strong, .codespace-copy small { display: block; }
+.codespace-copy strong { color: #f0f7f6; font-size: .76rem; line-height: 1.25; }
+.codespace-copy small { margin-top: 3px; color: #8da29f; font-size: .62rem; line-height: 1.3; }
+.codespace-arrow { margin-left: 3px; color: #5eead4; font-size: .95rem; }
 .eyebrow { margin: 28px 0 7px; color: #81909d; font-size: .9rem; }
 h1 { margin: 0; color: #f7fafc; font-size: clamp(2.7rem,11vw,4.8rem); line-height: .98; letter-spacing: -.05em; text-wrap: balance; }
 h2 { max-width: 720px; margin: 16px 0 0; color: #2dd4bf; font-size: clamp(1.55rem,6.5vw,2.65rem); line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
